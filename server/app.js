@@ -12,6 +12,7 @@ var clients = require('./server/routes/clients');
 var routes = require('./server/routes/index');
 var jauth = require('./server/routes/jauth');
 var oauth = require('./server/routes/oauth');
+var catchall = require('./server/routes/catchall');
 
 var app = express();
 
@@ -38,6 +39,7 @@ app.use('/api/jauth', jauth);
 app.use('/api/oauth', oauth);
 
 app.use('/', routes);
+app.use('/*', catchall);
 
 //A catch all route for serving 404 errors or redirecting naughty people, test later
 //app.use('/*', routes);
