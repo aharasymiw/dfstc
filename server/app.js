@@ -5,7 +5,6 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var jwt = require('express-jwt');
 var dotenv = require('dotenv');
-var moment = require('moment');
 
 var appointments = require('./server/routes/appointments');
 var caseworkers = require('./server/routes/caseworkers');

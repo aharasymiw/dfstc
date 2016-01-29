@@ -9,23 +9,23 @@ $routeProvider, $locationProvider, $httpProvider, jwtInterceptorProvider) {
     when('/admin/appts', {
       templateUrl: '../views/routes/admin_appts.html',
       controller: 'AdminApptsCtrl',
-      requiresLogin: true
+      requiresLogin: false
     }).when('/admin/caseworkers', {
       templateUrl: '../views/routes/admin_caseworkers.html',
       controller: 'AdminCaseworkersCtrl',
-      requiresLogin: true
+      requiresLogin: false
     }).when('/admin/clients', {
       templateUrl: '../views/routes/admin_clients.html',
       controller: 'AdminClientsCtrl',
-      requiresLogin: true
+      requiresLogin: false
     }).when('/admin/details', {
       templateUrl: '../views/routes/client_details.html',
       controller: 'ClientDetailsCtrl',
-      requiresLogin: true
+      requiresLogin: false
     }).when('/form', {
       templateUrl: '../views/routes/form.html',
       controller: 'FormCtrl',
-      requiresLogin: true
+      requiresLogin: false
     }).when('/home', {
       templateUrl: '../views/routes/home.html',
       controller: 'HomeCtrl',
