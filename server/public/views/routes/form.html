@@ -6,27 +6,27 @@
     <!--Do we still want the form worded in the perspective of a caseworker?-->
     <label>Thank you for using Dress for Success Twin Cities. Please fill out the form below so we can help your client
         get suited for their interview or job.</label>
-    <form>
+    <form >
         <div class="client-info">
             <h4>Client Information</h4>
             <label>First Name
-                <input type="text" ng-model="clientFirstName" placeholder="First Name">
+                <input type="text" ng-model="form.clientFirstName" placeholder="First Name">
             </label>
             <label>Last Name
-                <input type="text" ng-model="clientLastName" placeholder="Last Name">
+                <input type="text" ng-model="form.clientLastName" placeholder="Last Name">
             </label>
             <h4>Client Address</h4>
             <label>Street line 1:
-                <input type="text" ng-model="clientStreetL1" placeholder="Street line 1">
+                <input type="text" ng-model="form.clientStreetL1" placeholder="Street line 1">
             </label>
             <label>Street line 2:
-                <input type="text" ng-model="clientStreetL2" placeholder="Street line 2">
+                <input type="text" ng-model="form.clientStreetL2" placeholder="Street line 2">
             </label>
             <label>City:
-                <input type="text" ng-model="clientCity" placeholder="City">
+                <input type="text" ng-model="form.clientCity" placeholder="City">
             </label>
             <label>State:
-                <select ng-model="clientState">
+                <select ng-model="form.clientState">
                     <option value="MN">Minnesota</option>
                     <option value="AL">Alabama</option>
                     <option value="AK">Alaska</option>
@@ -81,38 +81,38 @@
                 </select>
             </label>
             <label>Zip:
-                <input ng-model="clientZip" type="text" placeholder="Zip">
+                <input ng-model="form.clientZip" type="text" placeholder="Zip">
             </label>
             <label>Client Home Phone:
-                <input ng-model="clientHomePh" type="tel">
+                <input ng-model="form.clientHomePh" type="tel">
             </label>
             <label>Cell Phone:
-                <input ng-model="clientCellPh" type="tel" placeholder="Cell Phone">
+                <input ng-model="form.clientCellPh" type="tel" placeholder="Cell Phone">
             </label>
             <label>Email:
-                <input ng-model="clientEmail" type="email" placeholder="Email">
+                <input ng-model="form.clientEmail" type="email" placeholder="Email">
             </label>
             <p>Alternate Client Contact. How else can we reach you?</p>
             <label>Contact Name
-                <input ng-model="altContactName" type="text" placeholder="Contact Name">
+                <input ng-model="form.altContactName" type="text" placeholder="Contact Name">
             </label>
             <label>Phone Number:
-                <input ng-model="altContactPh" type="tel">
+                <input ng-model="form.altContactPh" type="tel">
             </label>
             <label>Relation to Client
-                <input ng-model="altContactRel" type="text">
+                <input ng-model="form.altContactRel" type="text">
             </label>
         </div>
         <div class="suiting-info">
             <h4>Client Suiting Information</h4>
             <label>Age:
-                <input ng-model="clientAge" type="number">
+                <input ng-model="form.clientAge" type="number">
             </label>
             <label>Height:
-                <input ng-model="clientHeight" type="text">
+                <input ng-model="form.clientHeight" type="text">
             </label>
             <label>Select your top size:
-                <select ng-model="clientTopSize">
+                <select ng-model="form.clientTopSize">
                     <option value="XS">XS</option>
                     <option value="S">S</option>
                     <option value="M">M</option>
@@ -127,7 +127,7 @@
                 </select>
             </label>
             <label>Select your bottom size:
-                <select ng-model="clientBottomSize">
+                <select ng-model="form.clientBottomSize">
                     <option value="0">0</option>
                     <option value="2">2</option>
                     <option value="4">4</option>
@@ -158,7 +158,7 @@
             </label>
             <p>Select your shoe size:</p>
             <label>
-                <select ng-model="clientShoeSize">
+                <select ng-model="form.clientShoeSize">
                     <option value="5.5">5.5</option>
                     <option value="6">6</option>
                     <option value="6.5">6.5</option>
@@ -179,31 +179,31 @@
             </label>
             <br>
             <label>
-            <textarea ng-model="clientRestrictions" rows="4" cols="50" name="clothing-restrictions"
+            <textarea ng-model="form.clientRestrictions" rows="4" cols="50" name="clothing-restrictions"
                       placeholder="e.g. Unable to wear high-heels, must wear hijab..."></textarea>
             </label>
         </div>
         <div class="employment-info">
             <h4>Employment/Interview Information</h4>
             <label>First Interview Date
-                <input ng-model="interviewStartDate" type="date" name="interview-date">
+                <input ng-model="form.interviewStartDate" type="date" name="interview-date">
             </label>
             <p>OR</p>
             <label>Employment Start Date
-                <input ng-model="employementStartDate" type="date" name="employment-start">
+                <input ng-model="form.employementStartDate" type="date" name="employment-start">
             </label>
             <label>Company
-                <input ng-model="company" type="text" name="company-name">
+                <input ng-model="form.company" type="text" name="company-name">
             </label>
             <label>Job Title
-                <input ng-model="jobTitle" type="text" name="job-title">
+                <input ng-model="form.jobTitle" type="text" name="job-title">
             </label>
         </div>
 
         <label>Does your client have any scheduling restrictions?
-            <textarea rows="4" cols="50" name="schedule-restrictions"></textarea>
+            <textarea rows="4" cols="50" name="schedule-restrictions" ng-model="form.schedulingRestrictions"></textarea>
         </label>
         <br>
-        <input type="submit">
+        <button ng-click="submit()">Submit</button>
     </form>
 </div>

@@ -1,4 +1,4 @@
-app.controller('AdminApptsCtrl', ['$scope', '$http', 'auth',
-'store', function($scope, $http, auth, store) {
+app.controller('AdminApptsCtrl', ['$scope', '$http',
+'store', function($scope, $http, store) {
 
 }]);
