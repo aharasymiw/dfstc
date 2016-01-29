@@ -41,9 +41,6 @@ app.use('/api/oauth', oauth);
 app.use('/', routes);
 app.use('/*', catchall);
 
-//A catch all route for serving 404 errors or redirecting naughty people, test later
-//app.use('/*', routes);
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

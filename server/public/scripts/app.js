@@ -20,7 +20,7 @@ $routeProvider, $locationProvider, $httpProvider, jwtInterceptorProvider) {
       requiresLogin: false
     }).when('/admin/details', {
       templateUrl: '../views/routes/client_details.html',
-      controller: 'ClientDetailsCtrl',
+      controller: 'AdminClientsCtrl',
       requiresLogin: false
     }).when('/form', {
       templateUrl: '../views/routes/form.html',
