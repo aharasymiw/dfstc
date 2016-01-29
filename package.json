@@ -1,0 +1,34 @@
+{
+  "name": "dressupmn",
+  "version": "1.0.0",
+  "description": "A webapp to facilitate communication between two Minnesota non profits, DressUp MN and Upturnships.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aharasymiw/DressUpMn.git"
+  },
+  "author": "Adia Alderson, Andrew Harasymiw, Brandi Brown, Connor Klausing, and Nicholas Gill",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aharasymiw/DressUpMn/issues"
+  },
+  "homepage": "https://github.com/aharasymiw/DressUpMn#readme",
+  "dependencies": {
+    "auth0-lock": "^8.1.5",
+    "body-parser": "^1.14.2",
+    "debug": "^2.2.0",
+    "dotenv": "^2.0.0",
+    "express": "^4.13.3",
+    "express-jwt": "^3.3.0",
+    "moment": "^2.11.1",
+    "mongoose": "^4.3.6",
+    "morgan": "^1.6.1"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.4.9"
+  }
+}

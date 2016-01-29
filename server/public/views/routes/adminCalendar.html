@@ -1,0 +1,102 @@
+<nav ng-include="'/views/templates/nav.html'"></nav>
+
+<link rel="stylesheet" href="../vendors/Bootstrap-Calendar/angular-bootstrap-calendar.min.css">
+
+<!--Scripts-->
+<script src="../vendors/moment/moment.js"></script>
+<script src="../vendors/jQuery/jquery.min.js"></script>
+<script src="../vendors/Bootstrap/bootstrap.min.js"></script>
+<script src="../vendors/Bootstrap-UI/ui-bootstrap-tpls.js"></script>
+<script src="../vendors/Bootstrap-Calendar/angular-bootstrap-calendar-tpls.min.js"></script>
+<script src="../scripts/calendar-admin.js"></script>
+
+<div ng-controller="adminCal" class="container-fluid">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <h2 class="text-center">{{ calendarTitle }}</h2>
+
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8 text-center">
+                    <div class="btn-group">
+
+                        <button
+                                class="btn btn-primary"
+                                mwl-date-modifier
+                                date="viewDate"
+                                decrement="view">
+                            Previous
+                        </button>
+                        <button
+                                class="btn btn-default"
+                                mwl-date-modifier
+                                date="viewDate"
+                                set-to-today>
+                            Today
+                        </button>
+                        <button
+                                class="btn btn-primary"
+                                mwl-date-modifier
+                                date="viewDate"
+                                increment="view">
+                            Next
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <button class="btn btn-primary btn-block text-center" data-toggle="modal" data-target="#myModal">Add a Timeslot</button>
+            <button class="btn btn-primary btn-block text-center">Delete a Timeslot</button>
+            <button class="btn btn-primary btn-block text-center">View Clients</button>
+        </div>
+        <div class="col-md-8">
+            <mwl-calendar
+                    view="view"
+                    view-date="viewDate"
+                    events="events"
+                    view-title="calendarTitle"
+                    cell-is-open="isCellOpen"
+                    on-event-click="eventClicked(calendarEvent);"
+                    on-timespan-click="timespanClicked(calendarDate)"
+            >
+            </mwl-calendar>
+        </div>
+        <div class="col-md-2">
+            <h3>Upcoming Timeslots</h3>
+        </div>
+    </div>
+<footer ng-include="'/views/templates/footer.html'"></footer>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"> 
+        <div class="modal-dialog" role="document"> 
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Add a Timeslot</h4>
+                </div>
+                <div class="modal-body">
+                    <form ng-submit="submit()">
+                        <input type="text" class="form-control"
+                               uib-datepicker-popup="mediumDate"
+                               is-open="valuationDatePickerIsOpen"
+                               ng-click="valuationDatePickerOpen()"
+                               ng-model="valuationDate" />
+                        <uib-timepicker ng-model="mytime" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
+                        <p>{{mytime}}</p>
+                        <button class="btn btn-default" type="submit">Submit</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
