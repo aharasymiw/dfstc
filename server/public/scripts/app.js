@@ -1,45 +1,37 @@
 var app = angular.module('app', ['auth0', 'angular-storage', 'angular-jwt',
-'ngRoute',
-// 'mwl.calendar', 'ui.bootstrap'
-]);
+'ngRoute',]);
 
 app.config(['authProvider', '$routeProvider', '$locationProvider',
 '$httpProvider', 'jwtInterceptorProvider', function(authProvider,
 $routeProvider, $locationProvider, $httpProvider, jwtInterceptorProvider) {
 
   $routeProvider.
-    when('/client', {
-      templateUrl: '../views/routes/client.html',
-      controller: 'ClientController',
+    when('/admin/appts', {
+      templateUrl: '../views/routes/admin_appts.html',
+      controller: 'AdminApptsCtrl',
       requiresLogin: true
-    }).when('/volunteer/signup', {
-      templateUrl: '../views/routes/volunteerSignup.html',
-      controller: 'VolunteerSignupController',
+    }).when('/admin/caseworkers', {
+      templateUrl: '../views/routes/admin_caseworkers.html',
+      controller: 'AdminCaseworkersCtrl',
       requiresLogin: true
-    }).when('/volunteer/schedule', {
-      templateUrl: '../views/routes/volunteerSchedule.html',
-      controller: 'VolunteerScheduleController',
+    }).when('/admin/clients', {
+      templateUrl: '../views/routes/admin_clients.html',
+      controller: 'AdminClientsCtrl',
       requiresLogin: true
-    }).when('/caseworker/signup', {
-      templateUrl: '../views/routes/caseworkerSignup.html',
-      controller: 'CaseworkerSignupController',
+    }).when('/admin/details', {
+      templateUrl: '../views/routes/client_details.html',
+      controller: 'ClientDetailsCtrl',
       requiresLogin: true
-    }).when('/admin/calendar', {
-      templateUrl: '../views/routes/adminCalendar.html',
-      controller: 'AdminCalendarController',
+    }).when('/form', {
+      templateUrl: '../views/routes/form.html',
+      controller: 'FormCtrl',
       requiresLogin: true
-    }).when('/admin/users', {
-      templateUrl: '../views/routes/adminUsers.html',
-      controller: 'AdminUsersController',
-      requiresLogin: true
-    }).when('/login', {
-      templateUrl: '../views/routes/login.html',
-      controller: 'LoginController'
-    }).when('/error', {
-      templateUrl: '../views/routes/error.html',
-      controller: 'ErrorController',
+    }).when('/home', {
+      templateUrl: '../views/routes/home.html',
+      controller: 'HomeCtrl',
+      requiresLogin: false
     }).otherwise({
-      redirectTo: '/client'
+      redirectTo: '/home'
     });
 
   $locationProvider.html5Mode(true);
@@ -75,23 +67,6 @@ $routeProvider, $locationProvider, $httpProvider, jwtInterceptorProvider) {
   });
   auth.hookEvents();
 }
-  )/*.factory('alert', function($uibModal) {
-
-    function show(action, event) {
-      return $uibModal.open({
-        templateUrl: 'modelContent.html',
-        controller: function($scope) {
-          var vm = this;
-          $scope.action = action;
-          $scope.event = event;
-        },
-        controllerAs: 'vm'
-      });
-    }
-
-    return {
-      show: show
-    };
-  })*/;
+  );
 
 // "auth0-lock": "^8.1.5",

@@ -2,13 +2,13 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var volunteerSchema = new Schema(
+var jauthSchema = new Schema(
   {
 
   }
 );
 
-module.exports = mongoose.model('Volunteer', volunteerSchema);
+module.exports = mongoose.model('Jauth', jauthSchema);
 
 /* Cool things you can do with Schemas
 {

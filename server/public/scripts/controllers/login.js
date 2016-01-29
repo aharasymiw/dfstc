@@ -1,4 +1,4 @@
-app.controller('LoginController', ['$scope', 'auth', 'store',
+app.controller('LoginCtrl', ['$scope', 'auth', 'store',
 '$location', function($scope, auth, store, $location) {
   $scope.login = function() {
     auth.signin({}, function(profile, token) {

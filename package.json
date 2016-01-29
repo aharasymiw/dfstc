@@ -1,5 +1,5 @@
 {
-  "name": "dressupmn",
+  "name": "dfstc",
   "version": "1.0.0",
   "description": "A webapp to facilitate communication between two Minnesota non profits, DressUp MN and Upturnships.",
   "main": "app.js",
@@ -9,12 +9,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aharasymiw/DressUpMn.git"
+    "url": "git+https://github.com/aharasymiw/dfstc.git"
   },
   "author": "Adia Alderson, Andrew Harasymiw, Brandi Brown, Connor Klausing, and Nicholas Gill",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/aharasymiw/DressUpMn/issues"
+    "url": "https://github.com/aharasymiw/dfstc/issues"
   },
   "homepage": "https://github.com/aharasymiw/DressUpMn#readme",
   "dependencies": {
@@ -24,11 +24,7 @@
     "dotenv": "^2.0.0",
     "express": "^4.13.3",
     "express-jwt": "^3.3.0",
-    "moment": "^2.11.1",
     "mongoose": "^4.3.6",
     "morgan": "^1.6.1"
-  },
-  "devDependencies": {
-    "angular-mocks": "^1.4.9"
   }
 }

@@ -1,17 +1,18 @@
-/**
- * Created by cwklausing on 1/25/16.
- */
 var express = require('express');
 var router = express.Router();
 var path = require('path');
-
+//Requiring the client.js file from models
 var mongoose = require('mongoose');
-var Volunteer = require('../models/volunteers');
+var Client = require('../models/jauth');
 
 router.get('/', function(req, res, next) {
+  res.send('');
 });
 
 router.post('/', function(req, res, next) {
+  var clientForm = new Client({
+
+  });
   res.send('');
 });
 

@@ -10,8 +10,9 @@ var moment = require('moment');
 var appointments = require('./server/routes/appointments');
 var caseworkers = require('./server/routes/caseworkers');
 var clients = require('./server/routes/clients');
-var volunteers = require('./server/routes/volunteers');
 var routes = require('./server/routes/index');
+var jauth = require('./server/routes/jauth');
+var oauth = require('./server/routes/oauth');
 
 var app = express();
 
@@ -34,7 +35,8 @@ app.use('/api', jwtCheck);
 app.use('/api/appointments', appointments);
 app.use('/api/caseworkers', caseworkers);
 app.use('/api/clients', clients);
-app.use('/api/volunteers', volunteers);
+app.use('/api/jauth', jauth);
+app.use('/api/oauth', oauth);
 
 app.use('/', routes);
 

@@ -1,4 +1,4 @@
-app.controller('AppController', ['$scope', '$location',
+app.controller('AppCtrl', ['$scope', '$location',
 function AppCtrl($scope, $location) {
   $scope.$on('$routeChangeSuccess', function(e, nextRoute) {
     if (nextRoute.$$route && angular.isDefined(nextRoute.$$route.pageTitle)) {

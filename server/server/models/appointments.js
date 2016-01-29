@@ -13,7 +13,7 @@ var appointmentSchema = new Schema(
   }
 );
 
-module.exports = mongoose.model('Appointments', appointmentSchema);
+module.exports = mongoose.model('Appointment', appointmentSchema);
 
 /* Cool things you can do with Schemas
 {
