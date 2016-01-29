@@ -11,35 +11,44 @@ var caseworkers = require('./server/routes/caseworkers');
 var clients = require('./server/routes/clients');
 var routes = require('./server/routes/index');
 var jauth = require('./server/routes/jauth');
-var oauth = require('./server/routes/oauth');
 var catchall = require('./server/routes/catchall');
 
 var app = express();
 
 dotenv.load();
 
-var jwtCheck = jwt({
-  secret: new Buffer(process.env.AUTH0_CLIENT_SECRET, 'base64'),
-  audience: process.env.AUTH0_CLIENT_ID
-});
-
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
 
-//How to protect server-side routes
-//app.use('/api/path-you-want-to-protect', jwtCheck);
-app.use('/api', jwtCheck);
-
 app.use('/api/appointments', appointments);
 app.use('/api/caseworkers', caseworkers);
 app.use('/api/clients', clients);
 app.use('/api/jauth', jauth);
-app.use('/api/oauth', oauth);
 
 app.use('/', routes);
 app.use('/*', catchall);
+
+/** ---------- MONGOOSE CONNECTION HANDLING ---------- **/
+var dbURI = 'mongodb://localhost:27017/dfstc';
+
+mongoose.connect(dbURI);
+
+// When successfully connected
+mongoose.connection.on('connected', function () {
+  console.log('Mongoose default connection open to ' + dbURI);
+});
+
+// If the connection throws an error
+mongoose.connection.on('error',function (err) {
+  console.log('Mongoose default connection error: ' + err);
+});
+
+// When the connection is disconnected
+mongoose.connection.on('disconnected', function () {
+  console.log('Mongoose default connection disconnected');
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
