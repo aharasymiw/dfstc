@@ -1,13 +1,15 @@
 var express = require('express');
 var router = express.Router();
 var path = require('path');
-//Requiring the client.js file from models
 var mongoose = require('mongoose');
-//var Client = require('../models/clients');
 var clientService = require('../services/clientService');
 
-router.get('/', function(req, res, next) {
-  res.send('');
+router.get('/all', function(req, res, next) {
+
+  clientService.getClients(function(data) {
+    res.send(data);
+  });
+
 });
 
 router.post('/', function(req, res, next) {
