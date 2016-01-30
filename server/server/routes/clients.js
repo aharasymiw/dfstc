@@ -4,8 +4,12 @@ var path = require('path');
 var mongoose = require('mongoose');
 var clientService = require('../services/clientService');
 
-router.get('/', function(req, res, next) {
-  res.send('');
+router.get('/all', function(req, res, next) {
+
+  clientService.getClients(function(data) {
+    res.send(data);
+  });
+
 });
 
 router.post('/', function(req, res, next) {
