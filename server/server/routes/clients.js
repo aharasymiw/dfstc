@@ -1,9 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var path = require('path');
-//Requiring the client.js file from models
 var mongoose = require('mongoose');
-//var Client = require('../models/clients');
 var clientService = require('../services/clientService');
 
 router.get('/', function(req, res, next) {
