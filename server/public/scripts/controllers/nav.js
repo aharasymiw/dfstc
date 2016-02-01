@@ -1,6 +1,8 @@
 app.controller('NavCtrl', ['$scope', '$http', 'store',
-'$location','$ui.bootstrap', 'ngAside', function($scope, $http, store,
-$location, $aside) {
+
+'$location', function($scope, $http, store, $location, $aside) {
+
+
   $scope.logout = function() {
     alert('loged out');
     auth.signout();
