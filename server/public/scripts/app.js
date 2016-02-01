@@ -40,6 +40,7 @@ app.service('authService', ['$window', '$q', function($window, $q) {
 
   // This exposes the user object as a promise.
   // First two arguments of then are success and error callbacks, third one is notify callback.
+
   this.getUser = function() {
     self.setUser();
     return self.user;
@@ -59,7 +60,10 @@ app.service('authService', ['$window', '$q', function($window, $q) {
       var base64Url = token.split('.')[1];
       var base64 = base64Url.replace('-', '+').replace('_', '/');
       return JSON.parse($window.atob(base64));
-    } else {return {};}
+
+    } else {
+      return {};
+    }
   };
 
   this.saveToken = function(token) {
@@ -72,6 +76,7 @@ app.service('authService', ['$window', '$q', function($window, $q) {
   };
 
   this.isAuthed = function() {
+
     var token = this.getToken();
     if (token) {
       var params = self.parseJwt(token);

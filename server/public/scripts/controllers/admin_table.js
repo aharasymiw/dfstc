@@ -2,7 +2,6 @@
  * Created by Brandi on 1/29/16.
  */
 app.controller('tableController', function($http, $scope) {
-  console.log('I\'m in the controller');
   $scope.rowCollection = [];
   $scope.data = [].concat($scope.rowCollection);
 
