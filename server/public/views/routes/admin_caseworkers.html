@@ -2,7 +2,21 @@
 
 <div>
   <h2>Welcome to the Admin Caseworkers Page</h2>
-  <p>The Admin will be able to create, read, update, and delete caseworkers on this page.</p>
+  <form>
+    <label>New Caseworker: First Name
+      <input ng-model="cwFirstName" type="textbox">
+    </label>
+    <label>Last Name:
+      <input ng-model="cwLastName" type="textbox">
+    </label>
+    <label>Caseworker Email:
+      <input ng-model="cwEmail" type="email">
+    </label>
+    <label>Caseworker Organization:
+      <input ng-model="cwOrg" type="textbox">
+    </label>
+    <button type="submit">Submit</button>
+  </form>
   <p>There is a link to the admin_clients.html page.</p>
   <p>There is a link to the admin_appts.html page.</p>
 </div>
