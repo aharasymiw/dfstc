@@ -192,3 +192,14 @@ section{
 label {
   display: block;
 }
+
+/*Admin table styles*/
+table {
+  border-collapse: collapse;
+  margin: auto;
+  width: 100%;
+}
+
+.table-container {
+  background-color: #FCFCFC
+}
