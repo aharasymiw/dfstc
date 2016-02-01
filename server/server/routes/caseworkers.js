@@ -10,12 +10,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-  var caseworkerForm = new Caseworker({
-    cwFirstName: req.body[0],
-    cwLastName: String[1],
-    cwEmail: String[2],
-    cwOrg: String[3],
-  });
+  res.send('');
 });
 
 router.put('/', function(req, res, next) {
