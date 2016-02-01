@@ -1,9 +1,18 @@
 <nav ng-include="'/views/templates/nav.html'"></nav>
 
-<section class="container-fluid">
-  <h1>Welcome to the Home Page</h1>
-  <p>This is the default view that people see when the come to the site.</p>
-  <p>There is an authenticated link to form.html for clients.</p>
-  <p>There is an authenticated link to form.html for caseworkers.</p>
-  <p>There is an authenticated link to admin_appt.html for the admin.</p>
+<section>
+  <h3>Log In</h3>
+    <form>
+      <!--On submission, user should be routed to the appropriate page:
+      Clients and caseworkers to the form.html, admin to admin_appt.html-->
+      <label>Username/Email:
+        <input ng-model="loginUser" placeholder="username/email">
+      </label>
+      <label>Password:
+        <input ng-model="loginPass" placeholder="password">
+      </label>
+      <button>Submit</button>
+    </form>
+  <p>Don't have an account, or forgot your username/password? Contact us at 00101011@gmail.com
+  for assistance</p>
 </section>
