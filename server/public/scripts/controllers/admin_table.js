@@ -1,6 +1,6 @@
 /**
- * Created by Brandi on 1/29/16.
- */
+ * Created by Brandi on 1/29/16. **/
+
 app.controller('tableController',[ '$http', '$scope', function($http, $scope){
     console.log("I'm in the controller");
     $scope.rowCollection = [];
@@ -14,3 +14,4 @@ app.controller('tableController',[ '$http', '$scope', function($http, $scope){
     });
 
 }])
+
