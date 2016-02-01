@@ -116,6 +116,8 @@
     #page-content-wrapper {
         padding: 20px;
         position: relative;
+        margin-left: 80px;
+        width: 960px;
     }
 
     #wrapper.toggled #page-content-wrapper {
