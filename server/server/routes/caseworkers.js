@@ -3,7 +3,7 @@ var router = express.Router();
 var path = require('path');
 
 var mongoose = require('mongoose');
-var Caseworkers = require('../models/caseworkers');
+var Caseworker = require('../models/caseworkers');
 
 router.get('/', function(req, res, next) {
   res.send('');
