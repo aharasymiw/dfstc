@@ -16,9 +16,8 @@
   "bugs": {
     "url": "https://github.com/aharasymiw/dfstc/issues"
   },
-  "homepage": "https://github.com/aharasymiw/DressUpMn#readme",
+  "homepage": "https://github.com/aharasymiw/dfstc#readme",
   "dependencies": {
-    "auth0-lock": "^8.1.5",
     "bcrypt": "^0.8.5",
     "body-parser": "^1.14.2",
     "debug": "^2.2.0",
