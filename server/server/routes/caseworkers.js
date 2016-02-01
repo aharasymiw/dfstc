@@ -1,16 +1,20 @@
 var express = require('express');
 var router = express.Router();
 var path = require('path');
-
 var mongoose = require('mongoose');
-var Caseworker = require('../models/caseworkers');
+var caseworkerService = require('../services/caseworkerService');
 
 router.get('/', function(req, res, next) {
-  res.send('');
+  caseworkerService.getCaseworkers(function(data){
+    res.send(data);
+  })
 });
 
 router.post('/', function(req, res, next) {
-  res.send('');
+  console.log("this works", req.body);
+
+  caseworkerService.newCaseworker(req.body);
+  res.sendStatus(200);
 });
 
 router.put('/', function(req, res, next) {
