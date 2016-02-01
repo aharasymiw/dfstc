@@ -199,7 +199,54 @@ table {
   margin: auto;
   width: 100%;
 }
-
 .table-container {
   background-color: #FCFCFC
+}
+th {
+  background-color: #0FA1FF;
+  color: white;
+  height: 30px;
+  text-align: center;
+
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #ccc;
+}
+
+/* Page Select Footer*/
+
+.select-page {
+  width: 50px;
+  text-align: center;
+}
+.pagination li a input {
+  padding: 0;
+  margin: -5px 0;
+}
+
+.pagination>li {
+  display: inline;
+}
+
+.pagination {
+  text-align: center;
+  color: white;
+  font-weight: bold;
+}
+
+.pagination>li>a {
+  color: black;
+}
+
+tfoot {
+  background-color: #0FA1FF;
+  height: 40px;
+}
+.foottr {
+  height: 40px;
+}
+.text-center {
+  height: 40px;
+  border-radius: 0 0px 10px 10px;
 }
