@@ -24,7 +24,6 @@ router.post('/', function(req, res, next) {
       res.status(200).send('New User Saved');
     }
   });
-
 });
 
 router.put('/', function(req, res, next) {
