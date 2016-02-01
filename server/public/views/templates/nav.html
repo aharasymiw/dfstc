@@ -1,14 +1,45 @@
 <!-- This file is for testing purpouses, please add links to all pages in here -->
+<nav ng-include="'/views/templates/header.html'"></nav>
 
-<div class="nav" class="row" ng-controller="NavCtrl">
-    <div class="col-md-6 col-md-offset-3 text-center">
-        <ul class="nav nav-pills nav-justified">
-            <li><a href="/home">HOME</a></li>
-            <li><a href="/form">FORM</a></li>
-            <li><a href="/admin/appts">ADMIN APPTS</a></li>
-            <li><a href="/admin/caseworkers">ADMIN CASEWORKS</a></li>
-            <li><a href="/admin/clients">ADMIN CLIENTS</a></li>
-            <li><a href="/admin/details">ADMIN CLIENT DETAILS</a></li>
-        </ul>
+<div ng-controller="AdminApptsCtrl" class="">
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        MENU
+                    </a>
+                </li>
+                <li>
+                    <a href="#">TABLE</a>
+                </li>
+                <li>
+                    <div class="btn-group">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">Appointments <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Add apointment</a></li>
+                        <li><a href="#">Edit Appointment</a></li>
+                    </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="#"></a>
+                </li>
+                <li>
+                    <a href="#">Events</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Services</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
