@@ -3,17 +3,27 @@ var router = express.Router();
 var path = require('path');
 //Requiring the client.js file from models
 var mongoose = require('mongoose');
-var Client = require('../models/jauth');
+var User = require('../models/jauth');
 
 router.get('/', function(req, res, next) {
   res.send('');
 });
 
 router.post('/', function(req, res, next) {
-  var clientForm = new Client({
 
+  console.log(req.body);
+  var user = new User({
+    email: req.body.email,
+    password: req.body.password,
+    type: req.body.type
   });
-  res.send('');
+  user.save(function(err) {
+    if (err) {
+      res.status(400).send(err.message);
+    } else {
+      res.status(200).send('New User Saved');
+    }
+  });
 });
 
 router.put('/', function(req, res, next) {

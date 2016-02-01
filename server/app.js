@@ -10,6 +10,7 @@ var appointments = require('./server/routes/appointments');
 var caseworkers = require('./server/routes/caseworkers');
 var clients = require('./server/routes/clients');
 var routes = require('./server/routes/index');
+var login = require('./server/routes/login');
 var jauth = require('./server/routes/jauth');
 var catchall = require('./server/routes/catchall');
 
@@ -22,9 +23,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
 
+//app.use('/api/*', jwt({secret: 'supersecret'}));
+
 app.use('/api/appointments', appointments);
 app.use('/api/caseworkers', caseworkers);
 app.use('/api/clients', clients);
+app.use('/login', login);
 app.use('/api/jauth', jauth);
 
 app.use('/', routes);
@@ -36,17 +40,17 @@ var dbURI = 'mongodb://localhost:27017/dfstc';
 mongoose.connect(dbURI);
 
 // When successfully connected
-mongoose.connection.on('connected', function () {
+mongoose.connection.on('connected', function() {
   console.log('Mongoose default connection open to ' + dbURI);
 });
 
 // If the connection throws an error
-mongoose.connection.on('error',function (err) {
+mongoose.connection.on('error',function(err) {
   console.log('Mongoose default connection error: ' + err);
 });
 
 // When the connection is disconnected
-mongoose.connection.on('disconnected', function () {
+mongoose.connection.on('disconnected', function() {
   console.log('Mongoose default connection disconnected');
 });
 
@@ -58,6 +62,12 @@ app.use(function(req, res, next) {
 });
 
 // error handlers
+
+app.use(function(err, req, res, next) {
+  if (err.name === 'UnauthorizedError') {
+    res.send(401, 'invalid token...');
+  }
+});
 
 // development error handler
 // will print stacktrace
