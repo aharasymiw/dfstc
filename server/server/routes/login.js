@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
-
+var path = require('path');
+//Requiring the client.js file from models
+var mongoose = require('mongoose');
 var User = require('../models/jauth');
 
 router.post('/login', function(req, res, next) {

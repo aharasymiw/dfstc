@@ -18,9 +18,8 @@ router.post('/', function(req, res, next) {
     type: req.body.type
   });
   user.save(function(err) {
-    if(err) {
-      console.log(err);
-      res.status(400).send('Create User Borked');
+    if (err) {
+      res.status(400).send(err.message);
     } else {
       res.status(200).send('New User Saved');
     }
