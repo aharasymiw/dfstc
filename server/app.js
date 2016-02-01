@@ -62,9 +62,9 @@ app.use(function(req, res, next) {
 // error handlers
 
 app.use(function(err, req, res, next) {
-	if (err.name === 'UnauthorizedError') {
-		res.send(401, 'invalid token...');
-	}
+  if(err.name === 'UnauthorizedError') {
+    res.send(401, 'invalid token...');
+  }
 });
 
 // development error handler
