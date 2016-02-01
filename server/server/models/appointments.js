@@ -5,11 +5,11 @@ var Schema = mongoose.Schema;
 var appointmentSchema = new Schema(
   {
     title: String,
+      //Type will be left blank in the database until client fills it in.
     type: String,
-    startAt: String,
-    endsAt: String,
-    draggable: Boolean,
-    resizable: Boolean
+    date: String,
+    startTime: String,
+    endTime: String
   }
 );
 

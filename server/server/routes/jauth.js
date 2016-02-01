@@ -18,20 +18,10 @@ router.post('/', function(req, res, next) {
     type: req.body.type
   });
   user.save(function(err) {
-    console.log(err);
-  });
-
-});
-
-router.post('/login', function(req, res, next) {
-  console.log(req.body);
-
-  User.getAuthenticated(req.body, function(err, token) {
     if (err) {
-      console.log(err.message);
       res.status(400).send(err.message);
     } else {
-      res.send(token);
+      res.status(200).send('New User Saved');
     }
   });
 
