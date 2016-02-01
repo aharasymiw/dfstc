@@ -1,8 +1,24 @@
 <nav ng-include="'/views/templates/nav.html'"></nav>
 
-<div>
-  <h2>Welcome to the Admin Appointment Page</h2>
+<section>
+  <h2>Appointments</h2>
+  <h3>Create A New Time Slot</h3>
+  <form>
+    <label>Event Title
+      <input type="text" ng-model="form.title">
+    </label>
+    <label>Date
+      <input type="date" ng-model="form.date">
+    </label>
+    <label>Start Time
+      <input type="time" ng-model="form.startTime">
+    </label>
+    <label>End Time
+      <input type="time" ng-model="form.endTime">
+    </label>
+    <button ng-click="submit()">Create Event</button>
+  </form>
   <p>The Admin can create, read, and delete appointment times on this page.</p>
   <p>There is a link to the admin_caseworkers.html page.</p>
   <p>There is a link to the admin_clients.html page.</p>
-</div>
+</section>
