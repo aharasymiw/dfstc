@@ -10,6 +10,7 @@ var appointments = require('./server/routes/appointments');
 var caseworkers = require('./server/routes/caseworkers');
 var clients = require('./server/routes/clients');
 var routes = require('./server/routes/index');
+var login = require('./server/routes/login');
 var jauth = require('./server/routes/jauth');
 var catchall = require('./server/routes/catchall');
 
@@ -27,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api/appointments', appointments);
 app.use('/api/caseworkers', caseworkers);
 app.use('/api/clients', clients);
+app.use('/login', login);
 app.use('/api/jauth', jauth);
 
 app.use('/', routes);
