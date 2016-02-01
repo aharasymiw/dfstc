@@ -49,60 +49,57 @@ jauthSchema.pre('save', function(next) {
 /**
  * Methods
  */
-jauthSchema.methods.comparePassword = function (candidatePassword, callback) {
-	bcrypt.compare(candidatePassword, this.password, function (err, isMatch) {
-		if (err) return callback(err);
-		return callback(null, isMatch);
-	});
+jauthSchema.methods.comparePassword = function(candidatePassword, callback) {
+  bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+    if (err) {return callback(err);}
+    return callback(null, isMatch);
+  });
 };
 
 /**
  * Statics
  */
 
-jauthSchema.statics.getAuthenticated = function (user, callback) {
-	console.log('getAuthenticated', user);
-	this.findOne({email: user.email}, function (err, doc) {
-		if (err) {
-			console.log(err);
-			return callback(err);
-		}
+jauthSchema.statics.getAuthenticated = function(user, callback) {
+  console.log('getAuthenticated', user);
+  this.findOne({email: user.email}, function(err, doc) {
+    if (err) {
+      console.log(err);
+      return callback(err);
+    }
 
-		// make sure the user exists
-		else if (!doc) {
-			console.log('No user found,');
-			return callback(new Error('Invalid username or password.', 401), null);
-		}
-		else {
-			// test for a matching password
-			doc.comparePassword(user.password, function (err, isMatch) {
-				if (err) {
-					console.log(err);
-					return callback(err);
-				}
+    // make sure the user exists
+    else if (!doc) {
+      console.log('No user found,');
+      return callback(new Error('Invalid username or password.', 401), null);
+    } else {
+      // test for a matching password
+      doc.comparePassword(user.password, function(err, isMatch) {
+        if (err) {
+          console.log(err);
+          return callback(err);
+        }
 
-				// check if the password was a match
-				if (isMatch) {
-					var user = {
-						email: doc.email,
-						id: doc.id,
-						type: doc.type
-					};
+        // check if the password was a match
+        if (isMatch) {
+          var user = {
+            email: doc.email,
+            id: doc.id,
+            type: doc.type
+          };
 
-					// return the jwt
-					var token = jsonwebtoken.sign(user, 'supersecret', {
-						expiresIn: 86400 // expires in 24 hours, expressed in seconds
-					});
-					console.log("You got a token" + " : " + token);
-					return callback(null, token, user);
-				}
-				else {
-					return callback(new Error('Invalid username or password.'), null);
-
-				}
-			});
-		}
-	});
+          // return the jwt
+          var token = jsonwebtoken.sign(user, 'supersecret', {
+            expiresIn: 86400 // expires in 24 hours, expressed in seconds
+          });
+          console.log('You got a token' + ' : ' + token);
+          return callback(null, token, user);
+        } else {
+          return callback(new Error('Invalid username or password.'), null);
+        }
+      });
+    }
+  });
 };
 
 module.exports = mongoose.model('Jauth', jauthSchema);

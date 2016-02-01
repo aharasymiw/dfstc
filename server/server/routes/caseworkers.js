@@ -5,13 +5,13 @@ var mongoose = require('mongoose');
 var caseworkerService = require('../services/caseworkerService');
 
 router.get('/', function(req, res, next) {
-  caseworkerService.getCaseworkers(function(data){
+  caseworkerService.getCaseworkers(function(data) {
     res.send(data);
-  })
+  });
 });
 
 router.post('/', function(req, res, next) {
-  console.log("this works", req.body);
+  console.log('this works', req.body);
 
   caseworkerService.newCaseworker(req.body);
   res.sendStatus(200);
