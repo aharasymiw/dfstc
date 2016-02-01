@@ -1,5 +1,7 @@
-<div class="table" ng-controller="tableController">
-    <div class="table-container">
+
+<nav ng-include="'/views/templates/header.html'"></nav>
+<div class="table">
+    <div class="table-container" ng-controller="tableController">
         <table st-table="data" st-safe-src="rowCollection" class="admin-table">
             <thead>
             <tr>
