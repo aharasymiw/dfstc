@@ -16,14 +16,15 @@
   "bugs": {
     "url": "https://github.com/aharasymiw/dfstc/issues"
   },
-  "homepage": "https://github.com/aharasymiw/DressUpMn#readme",
+  "homepage": "https://github.com/aharasymiw/dfstc#readme",
   "dependencies": {
-    "auth0-lock": "^8.1.5",
+    "bcrypt": "^0.8.5",
     "body-parser": "^1.14.2",
     "debug": "^2.2.0",
     "dotenv": "^2.0.0",
     "express": "^4.13.3",
     "express-jwt": "^3.3.0",
+    "jsonwebtoken": "^5.5.4",
     "mongoose": "^4.3.6",
     "morgan": "^1.6.1"
   }
