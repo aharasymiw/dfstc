@@ -1,8 +1,18 @@
 <nav ng-include="'/views/templates/nav.html'"></nav>
 
 <div class="container-fluid">
-  <h1>Client Accounts</h1>
+  <h1>Client Data</h1>
+  <section>
+    <h3>Create New Client Account</h3>
+  <form>
+    <label>Client Email
+      <input type="email" ng-model="createClientEmail" required>
+    </label>
+    <button type="submit">Submit</button>
+  </form>
+  </section>
+
   <div>
-    <h2>Client Smart Table Goes Here</h2>
+    <h3>Client Smart Table Goes Here</h3>
   </div>
 </div>
