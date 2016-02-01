@@ -1,4 +1,4 @@
-var app = angular.module('app', ['angular-storage', 'angular-jwt',
+var app = angular.module('app', ['angular-storage', 'angular-jwt', 'smart-table',
 'ngRoute']);
 
 app.config(['$routeProvider', '$locationProvider',
@@ -24,6 +24,9 @@ $routeProvider, $locationProvider, $httpProvider, jwtInterceptorProvider) {
     }).when('/home', {
       templateUrl: '../views/routes/home.html',
       controller: 'HomeCtrl'
+    }).when('/admin_table', {
+        templateUrl: '../views/routes/admin_table.html',
+        controller: 'tableController'
     }).otherwise({
       redirectTo: '/home'
     });
