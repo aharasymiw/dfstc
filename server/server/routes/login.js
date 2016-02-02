@@ -13,6 +13,7 @@ router.post('/login', function(req, res, next) {
       console.log(err.message);
       res.status(400).send(err.message);
     } else {
+      console.log(token);
       res.send(token);
     }
   });
