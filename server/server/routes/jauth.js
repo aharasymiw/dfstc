@@ -19,6 +19,7 @@ router.post('/client', function(req, res, next) {
   });
 
   user.save(function(err) {
+
     console.log(err);
   });
 
@@ -47,14 +48,13 @@ router.post('/login', function(req, res, next) {
   console.log(req.body);
 
   User.getAuthenticated(req.body, function(err, token) {
-    if (err) {
-      console.log(err.message);
+
+    if(err) {
       res.status(400).send(err.message);
     } else {
-      res.send(token);
+      res.status(200).send('New User Saved');
     }
   });
-
 });
 
 router.put('/', function(req, res, next) {
