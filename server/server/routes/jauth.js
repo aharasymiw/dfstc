@@ -1,25 +1,45 @@
 var express = require('express');
 var router = express.Router();
 var path = require('path');
-//Requiring the client.js file from models
+var mailer = require('../services/emailService');
 var mongoose = require('mongoose');
 var User = require('../models/jauth');
+var easypass = require('easypass');
 
 router.get('/', function(req, res, next) {
   res.send('');
 });
 
-router.post('/', function(req, res, next) {
-
-  console.log(req.body);
+router.post('/client', function(req, res, next) {
+  var type = 'client';
   var user = new User({
     email: req.body.email,
     password: req.body.password,
-    type: req.body.type
+    type: client
   });
+
   user.save(function(err) {
     console.log(err);
   });
+
+});
+
+router.post('/caseworker', function(req, res, next) {
+  var password = easypass.generate(12);
+  var type = 'caseworker';
+  var user = new User({
+    email: req.body.email,
+    password: password,
+    type: type
+  });
+
+  user.save(function(err) {
+    console.log(err);
+  });
+
+  mailer.sendMailCaseworker(req.body.email, password);
+
+  res.sendStatus(200);
 
 });
 
