@@ -4,6 +4,7 @@ var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt');
 var jsonwebtoken = require('jsonwebtoken');
 var SALT_WORK_FACTOR = 12;
+var easypass = require('easypass');
 
 var jauthSchema = new Schema(
   {
