@@ -1,7 +1,6 @@
 app.controller('AdminCaseworkersCtrl', ['$scope', '$http',
 'store', function($scope, $http, store) {
   $scope.submit = function() {
-
     $http({
       method: 'POST',
       url: '/api/caseworkers',
@@ -11,6 +10,6 @@ app.controller('AdminCaseworkersCtrl', ['$scope', '$http',
     }, function errorCallback(response) {
       console.log(response);
     });
-  };
 
+  };
 }]);
