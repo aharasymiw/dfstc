@@ -12,14 +12,16 @@ app.controller('AdminCaseworkersCtrl', ['$scope', '$http',
     });
 
     var createAccount = function(email) {
+      var cwEmail = {email: email};
       $http({
         method: 'POST',
         url: '/api/jauth/caseworker',
-        data: email
+        data: cwEmail
       }).then(function successCallback(response) {
 
       }, function errorCallback(response) {
         console.log(response);
       });
+    };
   };
 }]);
