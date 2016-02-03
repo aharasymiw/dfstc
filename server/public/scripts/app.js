@@ -32,6 +32,7 @@ $routeProvider, $locationProvider, $httpProvider, jwtInterceptorProvider) {
     });
 
   $locationProvider.html5Mode(true);
+  $httpProvider.interceptors.push('authInterceptor');
 
 }]);
 
