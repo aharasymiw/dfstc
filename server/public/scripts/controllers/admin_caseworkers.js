@@ -1,6 +1,18 @@
 app.controller('AdminCaseworkersCtrl', ['$scope', '$http',
 'store', function($scope, $http, store) {
-  $scope.submit = function() {
+    $scope.rowCollection = [];
+    $scope.data = [].concat($scope.rowCollection);
+
+    $http.get('api/caseworkers').then(function(res) {
+      console.log(res);
+      $scope.rowCollection = res.data;
+      $scope.data = [].concat($scope.rowCollection);
+      console.log($scope.rowCollection);
+    }, function(err) {
+      console.log(err.message);
+    });
+
+    $scope.submit = function() {
     $http({
       method: 'POST',
       url: '/api/caseworkers',
@@ -11,7 +23,7 @@ app.controller('AdminCaseworkersCtrl', ['$scope', '$http',
       console.log(response);
     });
 
-    var createAccount = function(email) {
+    var createAccount = function (email) {
       var cwEmail = {email: email};
       $http({
         method: 'POST',
@@ -23,20 +35,5 @@ app.controller('AdminCaseworkersCtrl', ['$scope', '$http',
         console.log(response);
       });
     };
-
-    $scope.rowCollection = [];
-    $scope.data = [].concat($scope.rowCollection);
-
-    $http({
-      method: 'GET',
-      url: 'api/caseworkers',
-      data: data
-    }).then(function(res) {
-        console.log(res);
-        $scope.rowCollection = res.data;
-        $scope.data = [].concat($scope.rowCollection);
-        console.log($scope.rowCollection);
-        }, function(err) {console.log(err.message);
-        });
   };
 }]);
