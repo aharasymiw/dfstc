@@ -2,115 +2,98 @@
 
 <!--Client form-->
 <div class="form  col-md-9 col-md-push-1" id="page-content-wrapper">
-    <h1>Client Referral Form</h1>
-    <!--Do we still want the form worded in the perspective of a caseworker?-->
-    <label>Thank you for using Dress for Success Twin Cities. Please fill out the form below so we can help your client
-        get suited for their interview or job.</label>
-    <form >
-        <div class="client-info">
-            <h4>Client Information</h4>
-            <label>First Name
-                <input type="text" ng-model="form.clientFirstName" placeholder="First Name">
-            </label>
-            <label>Last Name
-                <input type="text" ng-model="form.clientLastName" placeholder="Last Name">
-            </label>
-            <h4>Client Address</h4>
-            <label>Street line 1:
-                <input type="text" ng-model="form.clientStreetL1" placeholder="Street line 1">
-            </label>
-            <label>Street line 2:
-                <input type="text" ng-model="form.clientStreetL2" placeholder="Street line 2">
-            </label>
-            <label>City:
-                <input type="text" ng-model="form.clientCity" placeholder="City">
-            </label>
-            <label>State:
-                <select ng-model="form.clientState">
-                    <option value="MN">Minnesota</option>
-                    <option value="AL">Alabama</option>
-                    <option value="AK">Alaska</option>
-                    <option value="AZ">Arizona</option>
-                    <option value="AR">Arkansas</option>
-                    <option value="CA">California</option>
-                    <option value="CO">Colorado</option>
-                    <option value="CT">Connecticut</option>
-                    <option value="DE">Delaware</option>
-                    <option value="DC">District Of Columbia</option>
-                    <option value="FL">Florida</option>
-                    <option value="GA">Georgia</option>
-                    <option value="HI">Hawaii</option>
-                    <option value="ID">Idaho</option>
-                    <option value="IL">Illinois</option>
-                    <option value="IN">Indiana</option>
-                    <option value="IA">Iowa</option>
-                    <option value="KS">Kansas</option>
-                    <option value="KY">Kentucky</option>
-                    <option value="LA">Louisiana</option>
-                    <option value="ME">Maine</option>
-                    <option value="MD">Maryland</option>
-                    <option value="MA">Massachusetts</option>
-                    <option value="MI">Michigan</option>
-                    <option value="MS">Mississippi</option>
-                    <option value="MO">Missouri</option>
-                    <option value="MT">Montana</option>
-                    <option value="NE">Nebraska</option>
-                    <option value="NV">Nevada</option>
-                    <option value="NH">New Hampshire</option>
-                    <option value="NJ">New Jersey</option>
-                    <option value="NM">New Mexico</option>
-                    <option value="NY">New York</option>
-                    <option value="NC">North Carolina</option>
-                    <option value="ND">North Dakota</option>
-                    <option value="OH">Ohio</option>
-                    <option value="OK">Oklahoma</option>
-                    <option value="OR">Oregon</option>
-                    <option value="PA">Pennsylvania</option>
-                    <option value="RI">Rhode Island</option>
-                    <option value="SC">South Carolina</option>
-                    <option value="SD">South Dakota</option>
-                    <option value="TN">Tennessee</option>
-                    <option value="TX">Texas</option>
-                    <option value="UT">Utah</option>
-                    <option value="VT">Vermont</option>
-                    <option value="VA">Virginia</option>
-                    <option value="WA">Washington</option>
-                    <option value="WV">West Virginia</option>
-                    <option value="WI">Wisconsin</option>
-                    <option value="WY">Wyoming</option>
-                </select>
-            </label>
-            <label>Zip:
-                <input ng-model="form.clientZip" type="text" placeholder="Zip">
-            </label>
-            <label>Client Home Phone:
-                <input ng-model="form.clientHomePh" type="tel">
-            </label>
-            <label>Cell Phone:
-                <input ng-model="form.clientCellPh" type="tel" placeholder="Cell Phone">
-            </label>
-            <label>Email:
-                <input ng-model="form.clientEmail" type="email" placeholder="Email">
-            </label>
+
+    <h1>{{hello}}</h1>
+
+<div layout="column" ng-cloak class="md-inline-form">
+
+    <md-content layout-padding>
+        <form name="userForm">
+            <div layout-gt-xs="row">
+                <md-datepicker ng-model="user.submissionDate" md-placeholder="Enter date">
+                </md-datepicker>
+            </div>
+            <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>First name</label>
+                    <input ng-model="form.clientFirstName">
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Last Name</label>
+                    <input ng-model="form.clientLastName">
+                </md-input-container>
+            </div>
+            <md-input-container class="md-block">
+                <label>Address</label>
+                <input ng-model="form.clientStreet1">
+            </md-input-container>
+            <md-input-container md-no-float class="md-block">
+                <input ng-model="form.clientStreet2" placeholder="Address 2">
+            </md-input-container>
+            <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>City</label>
+                    <input ng-model="form.clientCity">
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>State</label>
+                    <md-select ng-model="form.clientState">
+                        <md-option ng-repeat="state in states" value="{{state.abbrev}}">
+                            {{state.abbrev}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Zipcode:</label>
+                    <input name="Zipcode" ng-model="form.clientZip" placeholder="12345"
+                           required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
+                    <div ng-messages="userForm.postalCode.$error" role="alert" multiple>
+                        <div ng-message="required" class="my-message">You must supply a postal code.</div>
+                        <div ng-message="pattern" class="my-message">That doesn't look like a valid postal
+                            code.
+                        </div>
+                        <div ng-message="md-maxlength" class="my-message">
+                            Don't use the long version silly...we don't need to be that specific...
+                        </div>
+                    </div>
+                </md-input-container>
+            </div>
+            <md-input-container md-no-float class="md-block">
+                <md-icon md-svg-src="img/ic_phone_24px.svg"></md-icon>
+                <input ng-model="form.clientHomePh" type="text" placeholder="Client Home Phone">
+            </md-input-container>
+            <md-input-container md-no-float class="md-block">
+                <md-icon md-svg-src="img/ic_phone_24px.svg"></md-icon>
+                <input ng-model="form.clientCellPh" type="text" placeholder="Cell Phone">
+            </md-input-container>
+            <md-input-container md-no-float class="md-block">
+                <md-icon md-svg-src="img/ic_email_24px.svg"></md-icon>
+                <input ng-model="form.clientEmail" type="email" placeholder="Email (required)" ng-required="true">
+            </md-input-container>
             <p>Alternate Client Contact. How else can we reach you?</p>
-            <label>Contact Name
-                <input ng-model="form.altContactName" type="text" placeholder="Contact Name">
-            </label>
-            <label>Phone Number:
-                <input ng-model="form.altContactPh" type="tel">
-            </label>
-            <label>Relation to Client
-                <input ng-model="form.altContactRel" type="text">
-            </label>
-        </div>
-        <div class="suiting-info">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Contact Name</label>
+                <input ng-model="form.altContactName">
+            </md-input-container>
+            <md-input-container md-no-float class="md-block">
+                <md-icon md-svg-src="img/ic_phone_24px.svg"></md-icon>
+                <input ng-model="form.clientContactPh" type="number" placeholder="Phone Number">
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Relation to Client</label>
+                <input ng-model="form.altContactRel">
+            </md-input-container>
+
             <h4>Client Suiting Information</h4>
-            <label>Age:
-                <input ng-model="form.clientAge" type="number">
-            </label>
-            <label>Height:
-                <input ng-model="form.clientHeight" type="text">
-            </label>
+            <md-input-container md-no-float class="md-block">
+                <md-icon></md-icon>
+                <input ng-model="form.clientAge" type="number" placeholder="Age">
+            </md-input-container>
+            <md-input-container md-no-float class="md-block">
+                <md-icon></md-icon>
+                <input ng-model="form.clientHeight" type="number" placeholder="Height">
+            </md-input-container>
             <label>Select your top size:
                 <select ng-model="form.clientTopSize">
                     <option value="XS">XS</option>
@@ -125,7 +108,7 @@
 
                     <option value="4X-up">4X and up</option>
                 </select>
-            </label>
+            </label><br><br>
             <label>Select your bottom size:
                 <select ng-model="form.clientBottomSize">
                     <option value="0">0</option>
@@ -177,33 +160,34 @@
                     <option value="13">13</option>
                 </select>
             </label>
-            <br>
-            <label>
-            <textarea ng-model="form.clientRestrictions" rows="4" cols="50" name="clothing-restrictions"
-                      placeholder="e.g. Unable to wear high-heels, must wear hijab..."></textarea>
-            </label>
-        </div>
-        <div class="employment-info">
-            <h4>Employment/Interview Information</h4>
-            <label>First Interview Date
-                <input ng-model="form.interviewStartDate" type="date" name="interview-date">
-            </label>
-            <p>OR</p>
-            <label>Employment Start Date
-                <input ng-model="form.employementStartDate" type="date" name="employment-start">
-            </label>
-            <label>Company
-                <input ng-model="form.company" type="text" name="company-name">
-            </label>
-            <label>Job Title
-                <input ng-model="form.jobTitle" type="text" name="job-title">
-            </label>
-        </div>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Restrictions</label>
+                <input ng-model="form.clientRestrictions" name="clothing-restrictions">
+                <p>e.g. Unable to wear high-heels, must wear hijab...</p>
+            </md-input-container>
+            <p>First Interview Date</p>
+            <md-datepicker ng-model="form.interviewStartDate" md-placeholder="interview-date">
+            </md-datepicker><br><br>
+            <p>Employment Start Date</p>
+            <md-datepicker ng-model="form.employmentStartDate" md-placeholder="employment-start">
+            </md-datepicker>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Company</label>
+                <input ng-model="form.company" name="company-name">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Job Title</label>
+                <input ng-model="form.jobTitle" name="job-title">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <p>Does your client have any scheduling restrictions?</p>
+                <label></label>
+                <input ng-model="form.company" name="company-name">
+            </md-input-container>
+            <md-button class="btn1">Submit</md-button>
+        </form>
 
-        <label>Does your client have any scheduling restrictions?
-            <textarea rows="4" cols="50" name="schedule-restrictions" ng-model="form.schedulingRestrictions"></textarea>
-        </label>
-        <br>
-        <button ng-click="submit()">Submit</button>
-    </form>
+</div>
+</md-content>
+</div>
 </div>
