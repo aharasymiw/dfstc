@@ -23,5 +23,20 @@ app.controller('AdminCaseworkersCtrl', ['$scope', '$http',
         console.log(response);
       });
     };
+
+    $scope.rowCollection = [];
+    $scope.data = [].concat($scope.rowCollection);
+
+    $http({
+      method: 'GET',
+      url: 'api/caseworkers',
+      data: data
+    }).then(function(res) {
+        console.log(res);
+        $scope.rowCollection = res.data;
+        $scope.data = [].concat($scope.rowCollection);
+        console.log($scope.rowCollection);
+        }, function(err) {console.log(err.message);
+        });
   };
 }]);
