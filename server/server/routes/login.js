@@ -5,7 +5,7 @@ var path = require('path');
 var mongoose = require('mongoose');
 var User = require('../models/jauth');
 
-router.post('/login', function(req, res, next) {
+router.post('/', function(req, res, next) {
   console.log(req.body);
 
   User.getAuthenticated(req.body, function(err, token) {
