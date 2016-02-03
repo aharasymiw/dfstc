@@ -3,14 +3,18 @@ app.controller('AdminCaseworkersCtrl', ['$scope', '$http',
     $scope.rowCollection = [];
     $scope.data = [].concat($scope.rowCollection);
 
-    $http.get('api/caseworkers').then(function(res) {
-      console.log(res);
-      $scope.rowCollection = res.data;
-      $scope.data = [].concat($scope.rowCollection);
-      console.log($scope.rowCollection);
-    }, function(err) {
-      console.log(err.message);
-    });
+    $scope.getTableData = function() {
+        $http.get('api/caseworkers').then(function(res) {
+            console.log(res);
+            $scope.rowCollection = res.data;
+            $scope.data = [].concat($scope.rowCollection);
+            console.log($scope.rowCollection);
+        }, function(err) {
+            console.log(err.message);
+        });
+    };
+
+    $scope.getTableData();
 
     $scope.submit = function() {
     $http({
@@ -30,7 +34,7 @@ app.controller('AdminCaseworkersCtrl', ['$scope', '$http',
         url: '/api/jauth/caseworker',
         data: cwEmail
       }).then(function successCallback(response) {
-
+          $scope.getTableData();
       }, function errorCallback(response) {
         console.log(response);
       });
