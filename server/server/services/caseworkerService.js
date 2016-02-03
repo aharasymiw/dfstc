@@ -5,7 +5,6 @@ var mongoose = require('mongoose');
 var Caseworker = require('../models/caseworkers');
 
 var caseworkerService = {
-
   newCaseworker: function(data) {
     var caseworker = new Caseworker(data);
     caseworker.save(function(err) {
