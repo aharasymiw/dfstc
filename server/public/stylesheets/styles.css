@@ -277,3 +277,40 @@ section {
   text-shadow: 0 2px 2px rgba(0,0,0,0.5);
 }
 
+.inputdemoIcons {
+  /*
+ .right-icon {
+  position: absolute;
+  top: 4px;
+  right: 2px;
+  left: auto;
+  margin-top: 0;
+ }
+ */ }
+.inputdemoIcons .inputIconDemo {
+  min-height: 48px; }
+.inputdemoIcons md-input-container:not(.md-input-invalid) > md-icon.email {
+  color: green; }
+.inputdemoIcons md-input-container:not(.md-input-invalid) > md-icon.name {
+  color: dodgerblue; }
+.inputdemoIcons md-input-container.md-input-invalid > md-icon.email,
+.inputdemoIcons md-input-container.md-input-invalid > md-icon.name {
+  color: red; }
+
+.btn1 {
+  background-color: #5D6FFF;
+}
+
+
+/* Angular-material Overrides */
+body {
+  background: transparent!important;
+}
+
+#page-content-wrapper {
+  box-shadow: 0 0 10px 5px rgba(0,0,0,0.5);
+}
+
+.btn1 {
+  background-color: #5D6FFF;
+}
