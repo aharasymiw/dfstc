@@ -297,9 +297,7 @@ section {
 .inputdemoIcons md-input-container.md-input-invalid > md-icon.name {
   color: red; }
 
-.btn1 {
-  background-color: #5D6FFF;
-}
+
 
 
 /* Angular-material Overrides */
@@ -311,6 +309,26 @@ body {
   box-shadow: 0 0 10px 5px rgba(0,0,0,0.5);
 }
 
-.btn1 {
-  background-color: #5D6FFF;
+#md-date-pane1 {
+  width: 346px;
+}
+
+#md-date-pane19 {
+  width: 346px;
+}
+
+#md-date-pane20 {
+  width: 346px;
+}
+
+#md-date-pane75 {
+  width: 346px;
+}
+
+#md-date-pane93 {
+  width: 346px;
+}
+
+#md-date-pane94 {
+  width: 346px;
 }
