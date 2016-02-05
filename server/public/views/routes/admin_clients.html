@@ -2,7 +2,7 @@
 <div class=" col-md-9 col-md-push-1">
   >
   <section>
-      <h1>Client Data</h1
+      <h1>Client Data</h1>
     <h3>Create New Client Account</h3>
   <!--Client creation form-->
     <form>
@@ -16,6 +16,10 @@
       <div class="table-container">
           <table st-table="data" st-safe-src="rowCollection" class="admin-table">
               <thead>
+              <tr class="search-filter">
+                  <th class="search-filter" colspan="3">
+                      <input st-search placeholder="global search" class="input-sm form-control" type="search"/>
+              </tr>
               <tr>
                   <th st-sort="">First Name</th>
                   <th st-sort="">Last Name</th>
@@ -25,10 +29,6 @@
                   <th st-sort=""></th>
                   <th st-sort=""></th>
                   <th st-sort=""></th>
-              </tr>
-              <tr class="search-filter">
-                  <th class="search-filter" colspan="3">
-                      <input st-search placeholder="global search" class="input-sm form-control" type="search"/>
               </tr>
               </thead>
               <tbody>

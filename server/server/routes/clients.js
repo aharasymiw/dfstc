@@ -5,7 +5,6 @@ var mongoose = require('mongoose');
 var clientService = require('../services/clientService');
 
 router.get('/all', function(req, res, next) {
-
   clientService.getClients(function(data) {
     res.send(data);
   });
