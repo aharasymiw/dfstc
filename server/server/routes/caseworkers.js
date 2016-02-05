@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 var caseworkerService = require('../services/caseworkerService');
 
 router.get('/', function(req, res, next) {
+  console.log('Check check check');
   caseworkerService.getCaseworkers(function(data) {
     res.send(data);
   });

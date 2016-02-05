@@ -10,7 +10,7 @@
       <input ng-model="form.cwLastName" type="textbox">
     </label>
     <label>Caseworker Email:
-      <input ng-model="form.cwEmail" type="email">
+      <input ng-model="form.cwEmail" type="email" required>
     </label>
     <label>Caseworker Organization:
       <input ng-model="form.cwOrg" type="textbox">
@@ -19,9 +19,42 @@
   </form>
 
   <!--Smart table listing caseworkers goes here-->
-    <div>
-      <h3>Caseworker Smart Table Goes Here</h3>
+  <div class="table">
+    <div class="table-container">
+      <table st-table="data" st-safe-src="rowCollection" class="admin-table">
+        <thead>
+        <!--Search bar-->
+        <tr class="search-filter">
+          <th class="search-filter" colspan="3">
+            <input st-search placeholder="global search" class="input-sm form-control" type="search"/>
+        </tr>
+
+        <tr>
+          <th st-sort="">First Name</th>
+          <th st-sort="">Last Name</th>
+          <th st-sort="">Email</th>
+          <th st-sort="">Orginazation</th>
+        </tr>
+
+        </thead>
+        <tbody>
+        <tr ng-repeat="caseworker in data">
+          <td>{{caseworker.cwFirstName}}</td>
+          <td>{{caseworker.cwLastName}}</td>
+          <td>{{caseworker.cwEmail}}</td>
+          <td>{{caseworker.cwOrg}}</td>
+        </tr>
+        </tbody>
+        </thead>
+        <tr class="foottr">
+          <td colspan="5" class="text-center">
+            <div st-items-by-page="50" st-pagination="" st-template="views/templates/pagination.html"></div>
+          </td>
+        </tr>
+        </tfoot>
+      </table>
     </div>
+  </div>
 
   <p>There is a link to the admin_clients.html page.</p>
   <p>There is a link to the admin_appts.html page.</p>
