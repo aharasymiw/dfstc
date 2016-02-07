@@ -3,18 +3,16 @@
 <section class=" col-md-9 col-md-push-1">
   <h2>Welcome to the Admin Caseworkers Page</h2>
   <form>
-    <label>New Caseworker: First Name
-      <input ng-model="form.cwFirstName" type="textbox">
-    </label>
-    <label>Last Name:
-      <input ng-model="form.cwLastName" type="textbox">
-    </label>
-    <label>Caseworker Email:
-      <input ng-model="form.cwEmail" type="email" required>
-    </label>
-    <label>Caseworker Organization:
-      <input ng-model="form.cwOrg" type="textbox">
-    </label>
+    <h3>New Caseworker</h3>
+    <label>First Name</label>
+    <input ng-model="form.cwFirstName" type="textbox">
+    <label>Last Name</label>
+    <input ng-model="form.cwLastName" type="textbox">
+    <label>Caseworker Email</label>
+    <input ng-model="form.cwEmail" type="email" required>
+    <label>Caseworker Organization</label>
+    <input ng-model="form.cwOrg" type="textbox">
+    <br/>
     <button ng-click="submit()">Submit</button>
   </form>
 
@@ -55,7 +53,4 @@
       </table>
     </div>
   </div>
-
-  <p>There is a link to the admin_clients.html page.</p>
-  <p>There is a link to the admin_appts.html page.</p>
 </section>

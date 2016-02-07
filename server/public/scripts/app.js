@@ -1,5 +1,4 @@
-var app = angular.module('app', ['angular-storage', 'angular-jwt',
-'smart-table', 'ngRoute']);
+var app = angular.module('app', ['angular-storage', 'angular-jwt', 'ngMaterial','smart-table', 'ngRoute']);
 
 app.config(['$routeProvider', '$locationProvider',
 '$httpProvider', 'jwtInterceptorProvider', function(
