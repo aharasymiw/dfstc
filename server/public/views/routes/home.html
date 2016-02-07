@@ -1,4 +1,5 @@
 <nav ng-include="'/views/templates/nav.html'"></nav>
+
 <section class="col-md-9 col-md-push-1">
   <h3>Log In</h3>
     <form>
@@ -15,3 +16,38 @@
   <p>Don't have an account, or forgot your username/password? Contact us at 00101011@gmail.com
   for assistance</p>
 </section>
+
+<!--<section class="col-md-9 col-md-push-1">-->
+  <!--<h3>Log In</h3>-->
+    <!--<form>-->
+      <!--&lt;!&ndash;On submission, user should be routed to the appropriate page:-->
+      <!--Clients and caseworkers to the form.html, admin to admin_appt.html&ndash;&gt;-->
+      <!--<label>Username/Email:-->
+        <!--<input type="text" ng-model="loginUser" placeholder="username/email">-->
+      <!--</label>-->
+      <!--<label>Password:-->
+        <!--<input type="password" ng-model="loginPass" placeholder="password">-->
+      <!--</label>-->
+      <!--<button ng-click="submit()">Submit</button>-->
+    <!--</form>-->
+  <!--<p>Don't have an account, or forgot your username/password? Contact us at 00101011@gmail.com-->
+  <!--for assistance</p>-->
+<!--</section>-->
+
+
+<div id="fullscreen_bg" class="fullscreen_bg"/>
+
+<div class="container">
+
+  <form class="form-signin">
+    <h1 class="form-signin-heading text-muted">Sign In</h1>
+    <input type="text" class="form-control" ng-model="loginUser" placeholder="Username/Email address" required="" autofocus="">
+    <input type="password" class="form-control" ng-model="loginPass" placeholder="Password" required="">
+    <button class="btn btn-lg btn-primary btn-block" ng-click="submit()">
+      Sign In
+    </button>
+  </form>
+
+</div>
+
+
