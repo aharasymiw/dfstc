@@ -16,9 +16,36 @@
     <label>End Time
       <input type="time" ng-model="form.endTime">
     </label>
+    <h4>Reacurring:</h4>
+    <label>Often:</label>
+    <select ng-model="form.recurrence">
+      <option value="weekly">Weekly</option>
+      <option value="biWeekly">Bi-Weekly</option>
+    </select>
+    <label>Until:</label>
+      <input type="date" ng-model="form.dateRec">
     <button ng-click="submit()">Create Event</button>
   </form>
-  <p>The Admin can create, read, and delete appointment times on this page.</p>
-  <p>There is a link to the admin_caseworkers.html page.</p>
-  <p>There is a link to the admin_clients.html page.</p>
+
+  <table st-table="displayCollection" class="table table-striped" >
+    <thead>
+    <tr>
+      <th>Status</th>
+      <th>Type</th>
+      <th>Email</th>
+      <th>Date</th>
+      <th>Start Time</th>
+      <th>End Time</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>Fill</td>
+      <td>Fill</td>
+      <td>Fill</td>
+      <td>Fill</td>
+      <td>Fill</td>
+    </tr>
+    </tbody>
+  </table>
 </section>
