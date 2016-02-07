@@ -5,7 +5,10 @@ var mongoose = require('mongoose');
 var appointmentService = require('../services/appointmentService');
 
 router.get('/', function(req, res, next) {
-  res.send('');
+  appointmentService.getAppointment(function(data){
+    res.send(data);
+  });
+
 });
 
 router.post('/', function(req, res, next) {

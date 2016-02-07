@@ -13,7 +13,7 @@ var appointmentService = {
       }
     });
   },
-  getAppointment: function(data) {
+  getAppointment: function(callback) {
     Appointment.find({}, function(err, caseworkers) {
       if(err) {
         callback({message: 'No records found'});
