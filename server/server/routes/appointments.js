@@ -11,7 +11,12 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
   console.log('this works', req.body);
 
-  appointmentService.newAppointment(req.body);
+  if(Array.isArray(req.body)) {
+    appointmentService.newMultiAppointment(req.body);
+  } else {
+    appointmentService.newAppointment(req.body);
+  }
+
   res.sendStatus(200);
 });
 
