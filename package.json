@@ -29,6 +29,7 @@
     "express-jwt": "^3.3.0",
     "jsonwebtoken": "^5.5.4",
     "mongoose": "^4.3.6",
+    "mongoose-csv": "^1.0.0",
     "morgan": "^1.6.1",
     "node-schedule": "^0.6.0",
     "nodemailer": "^0.7.1"
