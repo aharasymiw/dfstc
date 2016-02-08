@@ -45,8 +45,8 @@
       <td>{{row.appointmentType}}</td>
       <td>{{row.email}}</td>
       <td>{{row.date | date}}</td>
-      <td>{{row.startTime}}</td>
-      <td>{{row.endTime}}</td>
+      <td>{{row.startTime | date : 'h:mm a'}}</td>
+      <td>{{row.endTime | date : 'h:mm a'}}</td>
       <td>
         <button type="button" ng-click="removeItem(row)" class="btn btn-sm btn-danger">
           <i class="glyphicon glyphicon-remove-circle">
