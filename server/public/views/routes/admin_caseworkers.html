@@ -31,7 +31,8 @@
           <th st-sort="">First Name</th>
           <th st-sort="">Last Name</th>
           <th st-sort="">Email</th>
-          <th st-sort="">Orginazation</th>
+          <th st-sort="">Organization</th>
+          <th st-sort="">Delete</th>
         </tr>
 
         </thead>
@@ -41,6 +42,12 @@
           <td>{{caseworker.cwLastName}}</td>
           <td>{{caseworker.cwEmail}}</td>
           <td>{{caseworker.cwOrg}}</td>
+          <td>
+            <button type="button" ng-click="removeItem(row)" class="btn btn-sm btn-danger">
+              <i class="glyphicon glyphicon-remove-circle">
+              </i>
+            </button>
+          </td>
         </tr>
         </tbody>
 
