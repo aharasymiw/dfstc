@@ -9,16 +9,15 @@ var appointmentService = {
     var appointment = new Appointment(data);
     appointment.save(function(err) {
       if(err) {
-        console.log(err);
       }
     });
   },
   getAppointment: function(callback) {
-    Appointment.find({}, function(err, caseworkers) {
+    Appointment.find({}, function(err, appointments) {
       if(err) {
         callback({message: 'No records found'});
       } else {
-        callback(caseworkers);
+        callback(appointments);
       }
     });
   },
@@ -28,6 +27,15 @@ var appointmentService = {
         return err;
       }else {
         return array;
+      }
+    });
+  },
+  deleteAppointment: function(data) {
+    var ObjectId = mongoose.Types.ObjectId;
+    var id = ObjectId('data');
+    Appointment.findByIdAndRemove(id, function(err) {
+      if(err) {
+      } else {
       }
     });
   }
