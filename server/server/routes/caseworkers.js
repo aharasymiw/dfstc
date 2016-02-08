@@ -11,10 +11,14 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-  console.log('this works', req.body);
+  req.body.cwEmail = req.body.cwEmail.toLowerCase();
 
-  caseworkerService.newCaseworker(req.body);
-  res.sendStatus(200);
+  var response = {
+    status: 200,
+    data: 'okay'
+  };
+  response = caseworkerService.newCaseworker(req.body);
+  res.status(response.status).send(response.data);
 });
 
 router.put('/', function(req, res, next) {
