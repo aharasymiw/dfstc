@@ -29,7 +29,8 @@ app.controller('AdminCaseworkersCtrl', ['$scope', '$http',
       $scope.getTableData();
       formReset();
     }, function errorCallback(response) {
-      console.log('caseworkers response: ', response);
+      alert('Caseworker Not Saved: ' + response.statusText);
+      console.log('caseworkers response: ', response.data.errmsg);
     });
   };
 
@@ -41,7 +42,8 @@ app.controller('AdminCaseworkersCtrl', ['$scope', '$http',
       }).then(function successCallback(response) {
         createCaseworker();
       }, function errorCallback(response) {
-        console.log('jauth response: ', response);
+        alert('Caseworker Not Saved: ' + response.statusText);
+        console.log('jauth response: ', response.data.errmsg);
       });
     };
 
