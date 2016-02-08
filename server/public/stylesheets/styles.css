@@ -3,6 +3,7 @@
 body {
   width: 100%;
   font: 14px "Calibri", Helvetica, Arial, sans-serif;
+  color: white !important;
 }
 
 .img-bkgrnd {
@@ -197,9 +198,10 @@ label {
 
 /*Admin table styles*/
 table {
+  width: 960px;
+  background: rgba(34,34,34,0.9);
   border-collapse: collapse;
-  margin: auto;
-  width: 100%;
+  margin: 0 auto;
 }
 
 .table-container {
@@ -305,7 +307,7 @@ body {
   background: transparent!important;
 }
 
-#page-content-wrapper {
+.page-content-wrapper {
   box-shadow: 0 0 10px 5px rgba(0,0,0,0.5);
 }
 
@@ -331,4 +333,10 @@ body {
 
 #md-date-pane94 {
   width: 346px;
+}
+
+.case-tab {
+  background-color: grey;
+  width: 960px;
+  margin-left: 157px;
 }

@@ -1,7 +1,7 @@
 <nav ng-include="'/views/templates/nav.html'"></nav>
 
-<section class=" col-md-9 col-md-push-1">
-  <div class="col-md-9 col-md-push-1" id="md-inline-form">
+
+  <div class="col-md-5 col-md-push-3 page-content-wrapper">
     <div layout="column" ng-cloak class="md-inline-form">
       <md-content layout-padding>
         <form name="userform">
@@ -30,8 +30,8 @@
     </div>
   </div>
 
-  <div class="table">
-    <div class="table-container">
+  <div class="col-md-9 col-md-push-1 table">
+    <div>
       <br/>
       <table st-table="data" st-safe-src="rowCollection" class="admin-table">
         <thead>
@@ -68,4 +68,4 @@
       </table>
     </div>
   </div>
-</section>
+
