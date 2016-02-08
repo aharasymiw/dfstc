@@ -38,7 +38,7 @@ router.post('/caseworker', function(req, res, next) {
       console.log('Error saving user: ', err);
       res.status(500).send(err);
     } else {
-      // mailer.sendMailCaseworker(req.body.email, password);
+      mailer.sendMailCaseworker(req.body.cwEmail, password);
       res.status(200).send('New user created');
     }
   });
