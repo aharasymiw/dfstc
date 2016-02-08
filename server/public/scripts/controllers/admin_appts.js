@@ -40,6 +40,13 @@ app.controller('AdminApptsCtrl', ['$scope', '$http',
     }
   };
 
+  $scope.seeFullAppt = function(row) {
+    var index = $scope.rowCollection.indexOf(row);
+    if (index !== -1) {
+      console.log(row);
+    }
+  };
+
   $scope.removeItem = function(row) {
     var index = $scope.rowCollection.indexOf(row);
     if (index !== -1) {
