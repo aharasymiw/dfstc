@@ -19,7 +19,6 @@ router.post('/client', function(req, res, next) {
   });
 
   user.save(function(err) {
-
     console.log(err);
   });
 
@@ -29,19 +28,20 @@ router.post('/caseworker', function(req, res, next) {
   var password = easypass.generate(12);
   var type = 'caseworker';
   var user = new User({
-    email: req.body.email,
+    email: req.body.cwEmail.toLowerCase(),
     password: password,
     type: type
   });
 
   user.save(function(err) {
-    console.log(err);
+    if (err) {
+      console.log('Error saving user: ', err);
+      res.status(500).send(err);
+    } else {
+      // mailer.sendMailCaseworker(req.body.email, password);
+      res.status(200).send('New user created');
+    }
   });
-
-  mailer.sendMailCaseworker(req.body.email, password);
-
-  res.sendStatus(200);
-
 });
 
 router.post('/login', function(req, res, next) {
