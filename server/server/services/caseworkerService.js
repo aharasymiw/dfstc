@@ -10,8 +10,17 @@ var caseworkerService = {
     caseworker.save(function(err) {
       if(err) {
         console.log(err);
+        return {
+          status: err.status,
+          data: err.data
+        };
+
       }
     });
+    return {
+      status: 200,
+      data: 'New caseworker created'
+    };
   },
   getCaseworkers: function(callback) {
     Caseworker.find({}, function(err, caseworkers) {
