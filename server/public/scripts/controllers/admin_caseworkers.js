@@ -50,11 +50,11 @@ app.controller('AdminCaseworkersCtrl', ['$scope', '$http',
   $scope.getTableData();
 
   $scope.removeItem = function removeItem(row) {
+    console.log(row);
     var index = $scope.rowCollection.indexOf(row);
     if (index !== -1) {
       $scope.rowCollection.splice(index, 1);
     }
-    console.log(row._id);
   };
 
 }]);
