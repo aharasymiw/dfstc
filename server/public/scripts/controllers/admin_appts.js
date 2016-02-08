@@ -15,7 +15,7 @@ app.controller('AdminApptsCtrl', ['$scope', '$http',
   $scope.getTableData();
 
   $scope.form = {
-    recurrence: undefined
+    recurrence: undefined,
   };
 
   $scope.submit = function() {
@@ -25,7 +25,7 @@ app.controller('AdminApptsCtrl', ['$scope', '$http',
     $http({
       method: 'POST',
       url: '/api/appointments',
-      data: data
+      data: data,
     }).then(function successCallback(response) {
       $scope.getTableData();
     }, function errorCallback(response) {
@@ -46,6 +46,7 @@ app.controller('AdminApptsCtrl', ['$scope', '$http',
       $scope.rowCollection.splice(index, 1);
     }
 
+    console.log(row._id);
     $http({
       method: 'DELETE',
       url: '/api/appointments',
@@ -58,6 +59,6 @@ app.controller('AdminApptsCtrl', ['$scope', '$http',
 
   $scope.itemsByPage = 15;
 
-}]);
+}, ]);
 
 //Controls the toggle of the side-menu bar

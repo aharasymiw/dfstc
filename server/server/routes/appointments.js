@@ -26,6 +26,7 @@ router.put('/', function(req, res, next) {
 });
 
 router.delete('/', function(req, res, next) {
+  console.log(req);
   appointmentService.deleteAppointment(req.body);
 
   res.send('');

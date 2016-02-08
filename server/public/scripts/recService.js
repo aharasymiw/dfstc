@@ -29,6 +29,7 @@ app.service('apptRec', function() {
 
   };
 
+
   this.recur = function(apptObj) {
     if(apptObj.recurrence === 'weekly') {
       recurrence = 6048e5;
