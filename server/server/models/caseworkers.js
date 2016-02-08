@@ -7,7 +7,7 @@ var caseworkerSchema = new Schema(
     cwFirstName: String,
     cwLastName: String,
     cwEmail: String,
-    cwOrg: String,
+    cwOrg: String
   }
 );
 

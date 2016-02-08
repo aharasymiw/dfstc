@@ -1,43 +1,50 @@
 app.controller('AdminCaseworkersCtrl', ['$scope', '$http',
 'store', function($scope, $http, store) {
-    $scope.rowCollection = [];
-    $scope.data = [].concat($scope.rowCollection);
+  $scope.rowCollection = [];
+  $scope.data = [].concat($scope.rowCollection);
 
-    $scope.getTableData = function() {
-        $http.get('api/caseworkers').then(function(res) {
-            console.log(res);
-            $scope.rowCollection = res.data;
-            $scope.data = [].concat($scope.rowCollection);
-            console.log($scope.rowCollection);
-        }, function(err) {
-            console.log(err.message);
-        });
-    };
+  $scope.getTableData = function() {
+    $http.get('api/caseworkers').then(function(res) {
+      $scope.rowCollection = res.data;
+      $scope.data = [].concat($scope.rowCollection);
+    }, function(err) {
+      console.log(err.message);
+    });
+  };
 
-    $scope.getTableData();
+  var formReset = function() {
+    $scope.form.cwFirstName = '';
+    $scope.form.cwLastName = '';
+    $scope.form.cwEmail = '';
+    $scope.form.cwOrg = '';
+  };
 
-    $scope.submit = function() {
+  var createCaseworker = function() {
     $http({
       method: 'POST',
       url: '/api/caseworkers',
       data: $scope.form
     }).then(function successCallback(response) {
-      createAccount($scope.form.cwEmail);
+      alert('New Caseworker Saved!');
+      $scope.getTableData();
+      formReset();
     }, function errorCallback(response) {
-      console.log(response);
+      console.log('caseworkers response: ', response);
     });
+  };
 
-    var createAccount = function (email) {
-      var cwEmail = {email: email};
+  $scope.submit = function() {
       $http({
         method: 'POST',
         url: '/api/jauth/caseworker',
-        data: cwEmail
+        data: $scope.form
       }).then(function successCallback(response) {
-          $scope.getTableData();
+        createCaseworker();
       }, function errorCallback(response) {
-        console.log(response);
+        console.log('jauth response: ', response);
       });
     };
-  };
+
+  $scope.getTableData();
+
 }]);
