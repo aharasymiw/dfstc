@@ -26,7 +26,7 @@
                   <th st-sort="">City</th>
                   <th st-sort="">State</th>
                   <th st-sort="">Zip</th>
-                  <th st-sort=""></th>
+                  <th st-sort="">Edit</th>
                   <th st-sort=""></th>
                   <th st-sort=""></th>
               </tr>
@@ -38,6 +38,12 @@
                   <td>{{client.clientCity}}</td>
                   <td>{{client.clientState}}</td>
                   <td>{{client.clientZip}}</td>
+                  <td>
+                      <button type="button" ng-click="seeFullClient(row)" class="btn btn-sm btn-default">
+                          <i class="glyphicon glyphicon-edit">
+                          </i>
+                      </button>
+                  </td>
               </tr>
               </tbody>
               <tfoot>
