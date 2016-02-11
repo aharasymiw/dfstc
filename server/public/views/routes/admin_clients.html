@@ -1,52 +1,52 @@
 <nav ng-include="'/views/templates/nav.html'"></nav>
-<div class=" col-md-9 col-md-push-1">
-  <section>
-      <h1>Client Data</h1>
-    <h3>Create New Client Account</h3>
-  <!--Client creation form-->
-    <form>
-      <label>New Client Email
-        <input type="email" ng-model="createClientEmail" required>
-      </label>
-      <button ng-click="submit()">Submit</button>
-    </form>
-  </section>
-  <div class="table">
-      <div class="table-container">
-          <table st-table="data" st-safe-src="rowCollection" class="admin-table">
-              <thead>
-              <tr class="search-filter">
-                  <th class="search-filter" colspan="3">
-                      <input st-search placeholder="global search" class="input-sm form-control" type="search"/>
-              </tr>
-              <tr>
-                  <th st-sort="">First Name</th>
-                  <th st-sort="">Last Name</th>
-                  <th st-sort="">City</th>
-                  <th st-sort="">State</th>
-                  <th st-sort="">Zip</th>
-                  <th st-sort=""></th>
-                  <th st-sort=""></th>
-                  <th st-sort=""></th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr ng-repeat="client in data">
-                  <td>{{client.clientFirstName}}</td>
-                  <td>{{client.clientLastName}}</td>
-                  <td>{{client.clientCity}}</td>
-                  <td>{{client.clientState}}</td>
-                  <td>{{client.clientZip}}</td>
-              </tr>
-              </tbody>
-              <tfoot>
-                <tr class="foottr">
-                    <td colspan="5" class="text-center">
-                        <div st-items-by-page="50" st-pagination="" st-template="views/templates/pagination.html"></div>
-                    </td>
-                </tr>
-              </tfoot>
-          </table>
+    <div class=" col-md-9 col-md-push-1">d
+      <section>
+          <h1>Client Data</h1>
+        <h3>Create New Client Account</h3>
+      <!--Client creation form-->
+        <form>
+          <label>New Client Email
+            <input type="email" ng-model="createClientEmail" required>
+          </label>
+          <button ng-click="submit()">Submit</button>
+        </form>
+      </section>
+      <div class="table">
+          <div class="table-container">
+              <table st-table="data" st-safe-src="rowCollection" class="admin-table">
+                  <thead>
+                  <tr class="search-filter">
+                      <th class="search-filter" colspan="3">
+                          <input st-search placeholder="global search" class="input-sm form-control" type="search"/>
+                  </tr>
+                  <tr>
+                      <th st-sort="">First Name</th>
+                      <th st-sort="">Last Name</th>
+                      <th st-sort="">City</th>
+                      <th st-sort="">State</th>
+                      <th st-sort="">Zip</th>
+                      <th st-sort=""></th>
+                      <th st-sort=""></th>
+                      <th st-sort=""></th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr ng-repeat="client in data">
+                      <td>{{client.clientFirstName}}</td>
+                      <td>{{client.clientLastName}}</td>
+                      <td>{{client.clientCity}}</td>
+                      <td>{{client.clientState}}</td>
+                      <td>{{client.clientZip}}</td>
+                  </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr class="foottr">
+                        <td colspan="5" class="text-center">
+                            <div st-items-by-page="50" st-pagination="" st-template="views/templates/pagination.html"></div>
+                        </td>
+                    </tr>
+                  </tfoot>
+              </table>
+          </div>
       </div>
-  </div>
-</div>
+    </div>
