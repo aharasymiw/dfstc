@@ -1,66 +1,68 @@
 <nav ng-include="'/views/templates/nav.html'"></nav>
 
-<section>
-  <h2>Appointments</h2>
-  <h3>Create A New Time Slot</h3>
-  <form>
-    <label>Event Title
-      <input type="text" ng-model="form.title">
-    </label>
-    <label>Date
-      <input type="date" ng-model="form.date">
-    </label>
-    <label>Start Time
-      <input type="time" ng-model="form.startTime">
-    </label>
-    <label>End Time
-      <input type="time" ng-model="form.endTime">
-    </label>
-    <h4>Reacurring:</h4>
-    <label>Often:</label>
-    <select ng-model="form.recurrence">
-      <option value="weekly">Weekly</option>
-      <option value="biWeekly">Bi-Weekly</option>
-    </select>
-    <label>Until:</label>
-      <input type="date" ng-model="form.dateRec">
-    <button ng-click="submit()">Create Event</button>
-  </form>
+  <div class=" col-md-9 col-md-push-1">
+      <section>
+        <h2>Appointments</h2>
+        <h3>Create A New Time Slot</h3>
+        <form>
+          <label>Event Title
+            <input type="text" ng-model="form.title">
+          </label>
+          <label>Date
+            <input type="date" ng-model="form.date">
+          </label>
+          <label>Start Time
+            <input type="time" ng-model="form.startTime">
+          </label>
+          <label>End Time
+            <input type="time" ng-model="form.endTime">
+          </label>
+          <h4>Reacurring:</h4>
+          <label>Often:</label>
+          <select ng-model="form.recurrence">
+            <option value="weekly">Weekly</option>
+            <option value="biWeekly">Bi-Weekly</option>
+          </select>
+          <label>Until:</label>
+          <input type="date" ng-model="form.dateRec">
+          <button ng-click="submit()">Create Event</button>
+        </form>
 
-  <table st-table="displayedCollection" st-safe-src="rowCollection" class="table table-striped" >
-    <thead>
-    <tr>
-      <th st-sort="">Status</th>
-      <th st-sort="">Type</th>
-      <th st-sort="">Email</th>
-      <th st-sort="">Date</th>
-      <th st-sort="">Start Time</th>
-      <th st-sort="">End Time</th>
-      <th st-sort="">Delete</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr ng-repeat="row in rowCollection">
-      <td>{{row.title}}</td>
-      <td>{{row.appointmentType}}</td>
-      <td>{{row.email}}</td>
-      <td>{{row.date | date}}</td>
-      <td>{{row.startTime}}</td>
-      <td>{{row.endTime}}</td>
-      <td>
-        <button type="button" ng-click="removeItem(row)" class="btn btn-sm btn-danger">
-          <i class="glyphicon glyphicon-remove-circle">
-          </i>
-        </button>
-      </td>
-    </tr>
-    </tbody>
-    <tfoot>
-      <tr>
-        <td colspan="5" class="text-center">
-          <div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
-        </td>
-      </tr>
-    </tfoot>
-  </table>
-</section>
+        <table st-table="displayedCollection" st-safe-src="rowCollection" class="table table-striped" >
+          <thead>
+          <tr>
+            <th st-sort="">Status</th>
+            <th st-sort="">Type</th>
+            <th st-sort="">Email</th>
+            <th st-sort="">Date</th>
+            <th st-sort="">Start Time</th>
+            <th st-sort="">End Time</th>
+            <th st-sort="">Delete</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr ng-repeat="row in rowCollection">
+            <td>{{row.title}}</td>
+            <td>{{row.appointmentType}}</td>
+            <td>{{row.email}}</td>
+            <td>{{row.date | date}}</td>
+            <td>{{row.startTime}}</td>
+            <td>{{row.endTime}}</td>
+            <td>
+              <button type="button" ng-click="removeItem(row)" class="btn btn-sm btn-danger">
+                <i class="glyphicon glyphicon-remove-circle">
+                </i>
+              </button>
+            </td>
+          </tr>
+          </tbody>
+          <tfoot>
+          <tr>
+            <td colspan="5" class="text-center">
+              <div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
+            </td>
+          </tr>
+          </tfoot>
+        </table>
+      </section>
+  </div>
