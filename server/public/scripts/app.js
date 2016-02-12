@@ -14,7 +14,7 @@ $routeProvider, $locationProvider, $httpProvider, jwtInterceptorProvider) {
     }).when('/admin/clients', {
       templateUrl: '../views/routes/admin_clients.html',
       controller: 'AdminClientsCtrl'
-    }).when('/admin/details', {
+    }).when('/admin/clients/details', {
       templateUrl: '../views/routes/client_details.html',
       controller: 'AdminClientsCtrl'
     }).when('/form', {

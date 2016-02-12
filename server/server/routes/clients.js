@@ -8,7 +8,10 @@ router.get('/all', function(req, res, next) {
   clientService.getClients(function(data) {
     res.send(data);
   });
+});
 
+router.post('/detail', function(req, res, err) {
+    res.send('');
 });
 
 router.post('/', function(req, res, next) {

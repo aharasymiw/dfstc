@@ -1,8 +1,186 @@
 <nav ng-include="'/views/templates/nav.html'"></nav>
 
-<section class=" col-md-9 col-md-push-1">
-  <h2>Welcome to the Client Details Page</h2>
-  <p>The Admin will see details about a selected client on this page.</p>
-  <p>They can update or delete the client.</p>
-  <p>There is a back button to link back to the admin_clients.html page.</p>
+<section class=" col-md-9 col-md-push-1" id="page-content-wrapper">
+  <div layout="column" ng-cloak class="md-inline-form">
+    <md-content layout-padding>
+      <form name="userForm">
+        <div layout-gt-xs="row">
+          <md-datepicker ng-model="user.submissionDate" md-placeholder="Enter date">
+          </md-datepicker>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>First name</label>
+            <input ng-model="form.clientFirstName">
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Last Name</label>
+            <input ng-model="form.clientLastName">
+          </md-input-container>
+        </div>
+        <md-input-container class="md-block">
+          <label>Address</label>
+          <input ng-model="form.clientStreet1">
+        </md-input-container>
+        <md-input-container md-no-float class="md-block">
+          <input ng-model="form.clientStreet2" placeholder="Address 2">
+        </md-input-container>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>City</label>
+            <input ng-model="form.clientCity">
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>State</label>
+            <md-select ng-model="form.clientState">
+              <md-option ng-repeat="state in states" value="{{state.abbrev}}">
+                {{state.abbrev}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Zipcode:</label>
+            <input name="Zipcode" ng-model="form.clientZip" placeholder="12345"
+                   required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
+            <div ng-messages="userForm.postalCode.$error" role="alert" multiple>
+              <div ng-message="required" class="my-message">You must supply a postal code.</div>
+              <div ng-message="pattern" class="my-message">That doesn't look like a valid postal
+                code.
+              </div>
+              <div ng-message="md-maxlength" class="my-message">
+                Don't use the long version silly...we don't need to be that specific...
+              </div>
+            </div>
+          </md-input-container>
+        </div>
+        <md-input-container md-no-float class="md-block">
+          <md-icon md-svg-src="assets/ic_phone_24px.svg"></md-icon>
+          <input ng-model="form.clientHomePh" type="text" placeholder="Client Home Phone">
+        </md-input-container>
+        <md-input-container md-no-float class="md-block">
+          <md-icon md-svg-src="assets/ic_phone_24px.svg"></md-icon>
+          <input ng-model="form.clientCellPh" type="text" placeholder="Cell Phone">
+        </md-input-container>
+        <md-input-container md-no-float class="md-block">
+          <md-icon md-svg-src="assets/ic_email_24px.svg"></md-icon>
+          <input ng-model="form.clientEmail" type="email" placeholder="Email (required)" ng-required="true">
+        </md-input-container>
+        <p>Alternate Client Contact. How else can we reach you?</p>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Contact Name</label>
+          <input ng-model="form.altContactName">
+        </md-input-container>
+        <md-input-container md-no-float class="md-block">
+          <md-icon md-svg-src="assets/ic_phone_24px.svg"></md-icon>
+          <input ng-model="form.clientContactPh" type="number" placeholder="Phone Number">
+        </md-input-container>
+
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Relation to Client</label>
+          <input ng-model="form.altContactRel">
+        </md-input-container>
+
+        <h4>Client Suiting Information</h4>
+        <md-input-container md-no-float class="md-block">
+          <md-icon></md-icon>
+          <input ng-model="form.clientAge" type="number" placeholder="Age">
+        </md-input-container>
+        <md-input-container md-no-float class="md-block">
+          <md-icon></md-icon>
+          <input ng-model="form.clientHeight" type="number" placeholder="Height">
+        </md-input-container>
+        <label>Select your top size:
+          <select ng-model="form.clientTopSize">
+            <option value="XS">XS</option>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+
+            <option value="2X">2X</option>
+
+            <option value="3X">3X</option>
+
+            <option value="4X-up">4X and up</option>
+          </select>
+        </label><br><br>
+        <label>Select your bottom size:
+          <select ng-model="form.clientBottomSize">
+            <option value="0">0</option>
+            <option value="2">2</option>
+            <option value="4">4</option>
+            <option value="6">6</option>
+            <option value="8">8</option>
+            <option value="10">10</option>
+
+            <option value="12">12</option>
+
+            <option value="14">14</option>
+
+            <option value="16">16</option>
+
+            <option value="18">18</option>
+
+            <option value="20">20</option>
+
+            <option value="22"> 22</option>
+
+            <option value="24"> 24</option>
+
+            <option value="26">26</option>
+            <option value="28">28</option>
+            <option value="3X">3X</option>
+            <option value="4X-up">4X and up</option>
+
+          </select>
+        </label><br><br>
+        <label>Select your shoe size:
+          <select ng-model="form.clientShoeSize">
+            <option value="5.5">5.5</option>
+            <option value="6">6</option>
+            <option value="6.5">6.5</option>
+            <option value="7">7</option>
+            <option value="7.5">7.5</option>
+            <option value="8">8</option>
+            <option value="8.5">8.5</option>
+            <option value="9">9</option>
+            <option value="9.5">9.5</option>
+            <option value="10">10</option>
+            <option value="10.5">10.5</option>
+            <option value="11">11</option>
+            <option value="11.5">11.5</option>
+            <option value="12">12</option>
+            <option value="12.5">12.5</option>
+            <option value="13">13</option>
+          </select>
+        </label>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Restrictions</label>
+          <input ng-model="form.clientRestrictions" name="clothing-restrictions">
+          <p>e.g. Unable to wear high-heels, must wear hijab...</p>
+        </md-input-container>
+        <p>First Interview Date</p>
+        <md-datepicker ng-model="form.interviewStartDate" md-placeholder="interview-date">
+        </md-datepicker><br><br>
+        <p>Employment Start Date</p>
+        <md-datepicker ng-model="form.employmentStartDate" md-placeholder="employment-start">
+        </md-datepicker>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Company</label>
+          <input ng-model="form.company" name="company-name">
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Job Title</label>
+          <input ng-model="form.jobTitle" name="job-title">
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <p>Does your client have any scheduling restrictions?</p>
+          <label></label>
+          <input ng-model="form.company" name="company-name">
+        </md-input-container>
+        <md-button class="btn1" ng-click="submit()">Submit</md-button>
+      </form>
+
+  </div>
+  </md-content>
 </section>
