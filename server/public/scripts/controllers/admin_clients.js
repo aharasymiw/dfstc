@@ -1,8 +1,8 @@
 app.controller('AdminClientsCtrl', ['$scope', '$http',
-  '$location', 'store', function($scope, $http, $location, store) {
+  '$location', 'clientDetailService', 'store', function($scope, $http, $location, clientDetailService, store) {
   //Returns an array of all records in the clients collection
   $scope.rowCollection = [];
-  $scope.clientArray = null;
+  $scope.clientArray = clientDetailService.data;
   $scope.data = [].concat($scope.rowCollection);
   $scope.seeFullClient = function(row) {
     var index = $scope.rowCollection.indexOf(row);
@@ -19,11 +19,8 @@ app.controller('AdminClientsCtrl', ['$scope', '$http',
     $location.path('/admin/clients/details');
     for(var i = 0; i < $scope.data.length; i++){
       if($scope.data[i]._id === id){
-        $scope.clientArray = $scope.data[i];
+        clientDetailService.data = $scope.data[i];
       }
     }
-  };
-  $scope.testScope = function(){
-    console.log($scope.clientArray);
   };
 }]);

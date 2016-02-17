@@ -35,6 +35,10 @@ $routeProvider, $locationProvider, $httpProvider, jwtInterceptorProvider) {
 
 }]);
 
+app.service('clientDetailService', [function() {
+  var data = null;
+}]);
+
 app.service('authService', ['$window', '$q', function($window, $q) {
 
   var self = this;
