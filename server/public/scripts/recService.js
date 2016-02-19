@@ -41,4 +41,3 @@ app.service('apptRec', function() {
   };
 
 });
-
