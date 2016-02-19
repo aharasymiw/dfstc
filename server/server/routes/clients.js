@@ -3,6 +3,8 @@ var router = express.Router();
 var path = require('path');
 var mongoose = require('mongoose');
 var clientService = require('../services/clientService');
+var client = require('../models/clients');
+
 
 router.get('/all', function(req, res, next) {
   clientService.getClients(function(data) {

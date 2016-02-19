@@ -1,5 +1,6 @@
 // Schema, dictates how clients are saved into mongo
 var mongoose = require('mongoose');
+var mongooseCsv = require('mongoose-csv');
 var Schema = mongoose.Schema;
 
 var clientSchema = new Schema(
@@ -24,7 +25,7 @@ var clientSchema = new Schema(
     clientShoeSize: String,
     clientRestrictions: String,
     interviewStartDate: Date,
-    employementStartDate: Date,
+    employmentStartDate: Date,
     company: String,
     jobTitle: String,
     schedulingRestrictions: String
