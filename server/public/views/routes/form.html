@@ -84,6 +84,11 @@
                 <input ng-model="form.altContactRel">
             </md-input-container>
 
+            <h4>Appointment Date:</h4>
+            <div  ng-repeat="appointment in appointments">
+                <input type="radio" name="gender" value={{appointment._id}}>{{appointment.date | date}}
+                Time:{{appointment.startTime | date : 'h:mm a'}}
+            </div>
             <h4>Client Suiting Information</h4>
             <md-input-container md-no-float class="md-block">
                 <md-icon></md-icon>

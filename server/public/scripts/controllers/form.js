@@ -1,5 +1,18 @@
 app.controller('FormCtrl', ['$scope', '$http', 'store', function($scope, $http, store) {
 
+  var retrieveAppointments = function() {
+    $http({
+      method: 'GET',
+      url: '/api/appointments'
+    }).then(function successCallback(response) {
+      $scope.appointments = response.data;
+    }, function errorCallback(response) {
+      console.log(response);
+    });
+  };
+
+  retrieveAppointments();
+
   $scope.submit = function() {
     console.log('FIRE!!!');
     $http({
