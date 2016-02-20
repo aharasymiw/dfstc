@@ -11,9 +11,20 @@ app.controller('FormCtrl', ['$scope', '$http', 'store', function($scope, $http, 
     });
   };
 
-  retrieveAppointments();
+  var updateAppointments = function() {
+    $http({
+      method: 'PUT',
+      url: '/api/appointments',
+      data: {_id: $scope.form.appointment, email: $scope.form.email, appointmentType: $scope.form.appointmentType}
+    }).then(function successCallback(response) {
+      saveClient();
+      console.log(response);
+    }, function errorCallback(response) {
+      alert(response);
+    });
+  };
 
-  $scope.submit = function() {
+  var saveClient = function() {
     console.log('FIRE!!!');
     $http({
       method: 'POST',
@@ -25,6 +36,12 @@ app.controller('FormCtrl', ['$scope', '$http', 'store', function($scope, $http, 
       console.log(response);
     });
 
+  };
+
+  retrieveAppointments();
+
+  $scope.submit = function() {
+    updateAppointments();
   };
 
   $scope.states = ('AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS ' +
@@ -39,5 +56,4 @@ app.controller('FormCtrl', ['$scope', '$http', 'store', function($scope, $http, 
       .primaryPalette('yellow')
       .dark();
 });
-
 

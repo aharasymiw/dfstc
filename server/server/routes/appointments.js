@@ -22,7 +22,10 @@ router.post('/', function(req, res, next) {
 });
 
 router.put('/', function(req, res, next) {
-  res.send('');
+
+  var response = appointmentService.updateAppointment(req.body);
+  res.status(response.status).send(response.data);
+
 });
 
 router.delete('/', function(req, res, next) {

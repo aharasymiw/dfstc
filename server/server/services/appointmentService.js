@@ -33,15 +33,33 @@ var appointmentService = {
     });
   },
 
-  deleteAppointment: function (data) {
+  deleteAppointment: function(data) {
     var ObjectId = mongoose.Types.ObjectId;
     var id = ObjectId('data');
-    Appointment.findByIdAndRemove(id, function (err) {
+    Appointment.findByIdAndRemove(id, function(err) {
       if(err) {
       } else {
       }
     });
   },
+
+  updateAppointment: function(data) {
+    Appointment.update({_id: data._id}, {title: 'Filled', appointmentType: data.appointmentType, email: data.email},
+      function(err, numAffected) {
+        if(err) {
+          console.log(err);
+          return {
+            status: err.status,
+            data: err.data
+          };
+        } else {
+          return {
+            status: 200,
+            data: numAffected + ' appointment(s) updated successfully'
+          };
+        }
+      });
+  }
 };
 
 module.exports = appointmentService;
