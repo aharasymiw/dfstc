@@ -13,9 +13,9 @@ app.controller('FormCtrl', ['$scope', '$http', 'store', function($scope, $http, 
 
   var updateAppointments = function() {
     $http({
-      method: 'PUT',
-      url: '/api/appointments',
-      data: {_id: $scope.form.appointment, email: $scope.form.email, appointmentType: $scope.form.appointmentType}
+      method: 'POST',
+      url: '/api/appointments/update',
+      data: {_id: $scope.form.appointment, email: $scope.form.clientEmail, appointmentType: $scope.form.appointmentType}
     }).then(function successCallback(response) {
       saveClient();
       console.log(response);

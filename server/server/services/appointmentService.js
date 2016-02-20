@@ -45,20 +45,19 @@ var appointmentService = {
 
   updateAppointment: function(data) {
     Appointment.update({_id: data._id}, {title: 'Filled', appointmentType: data.appointmentType, email: data.email},
-      function(err, numAffected) {
+      function(err, num) {
         if(err) {
           console.log(err);
           return {
             status: err.status,
             data: err.data
           };
-        } else {
-          return {
-            status: 200,
-            data: numAffected + ' appointment(s) updated successfully'
-          };
         }
       });
+    return {
+      status: 200,
+      data: 'appointment updated successfully'
+    };
   }
 };
 

@@ -21,9 +21,11 @@ router.post('/', function(req, res, next) {
   res.sendStatus(200);
 });
 
-router.put('/', function(req, res, next) {
+router.post('/update', function(req, res, next) {
+  console.log(req.body);
+  var response = {};
 
-  var response = appointmentService.updateAppointment(req.body);
+  response = appointmentService.updateAppointment(req.body);
   res.status(response.status).send(response.data);
 
 });
