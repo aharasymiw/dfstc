@@ -1,6 +1,5 @@
 // Schema, dictates how clients are saved into mongo
 var mongoose = require('mongoose');
-var mongooseCsv = require('mongoose-csv');
 var Schema = mongoose.Schema;
 
 var clientSchema = new Schema(
