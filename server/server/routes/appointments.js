@@ -21,8 +21,13 @@ router.post('/', function(req, res, next) {
   res.sendStatus(200);
 });
 
-router.put('/', function(req, res, next) {
-  res.send('');
+router.post('/update', function(req, res, next) {
+  console.log(req.body);
+  var response = {};
+
+  response = appointmentService.updateAppointment(req.body);
+  res.status(response.status).send(response.data);
+
 });
 
 router.delete('/:id', function(req, res, next) {

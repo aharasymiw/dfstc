@@ -3,6 +3,7 @@ var router = express.Router();
 var path = require('path');
 var mongoose = require('mongoose');
 var clientService = require('../services/clientService');
+var client = require('../models/clients');
 
 router.get('/all', function(req, res, next) {
   clientService.getClients(function(data) {
@@ -11,7 +12,7 @@ router.get('/all', function(req, res, next) {
 });
 
 router.post('/detail', function(req, res, err) {
-    res.send('');
+  res.send('');
 });
 
 router.post('/', function(req, res, next) {
