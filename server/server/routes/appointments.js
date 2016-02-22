@@ -25,11 +25,10 @@ router.put('/', function(req, res, next) {
   res.send('');
 });
 
-router.delete('/', function(req, res, next) {
-  console.log(req);
-  appointmentService.deleteAppointment(req.body);
+router.delete('/:id', function(req, res, next) {
+  appointmentService.deleteAppointment(req.params.id);
 
-  res.send('');
+  res.send('delete route happend');
 });
 
 module.exports = router;

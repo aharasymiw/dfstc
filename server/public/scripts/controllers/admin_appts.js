@@ -53,11 +53,9 @@ app.controller('AdminApptsCtrl', ['$scope', '$http',
       $scope.rowCollection.splice(index, 1);
     }
 
-    console.log(row._id);
     $http({
       method: 'DELETE',
-      url: '/api/appointments',
-      data: row._id
+      url: '/api/appointments/' + row._id
     }).then(function successCallback(response) {
     }, function errorCallback(response) {
     });
@@ -66,6 +64,4 @@ app.controller('AdminApptsCtrl', ['$scope', '$http',
 
   $scope.itemsByPage = 15;
 
-}, ]);
-
-//Controls the toggle of the side-menu bar
+},]);
