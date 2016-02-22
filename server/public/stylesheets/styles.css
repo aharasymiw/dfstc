@@ -1,9 +1,8 @@
 @import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css");
 /*----------------BODY-----------------*/
 body {
-  width: 100%;
+
   font: 14px "Calibri", Helvetica, Arial, sans-serif;
-  color: white !important;
 }
 
 .img-bkgrnd {
@@ -24,7 +23,11 @@ a {
 }
 
 .logo {
-  background: rgba(34,34,34,0.8);
+  background: #000000; /* Old browsers */
+  background: -moz-linear-gradient(left,  #000000 0%, #d6d6d6 23%, #c9c9c9 74%, #000000 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left,  #000000 0%,#d6d6d6 23%,#c9c9c9 74%,#000000 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right,  #000000 0%,#d6d6d6 23%,#c9c9c9 74%,#000000 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000',GradientType=1 ); /* IE6-9 */
   position: relative;
   text-align: center;
   width: 37%;
@@ -185,11 +188,6 @@ nav.sidebar .navbar-nav .open .dropdown-menu>li>a:hover, nav.sidebar .navbar-nav
 nav:hover .forAnimate{
   opacity: 1;
 }
-section{
-  padding-left: 15px;
-}
-
-
 /*This is for the contact form that Brandi is styling*/
 
 label {
@@ -198,8 +196,8 @@ label {
 
 /*Admin table styles*/
 table {
-  width: 960px;
-  background: rgba(34,34,34,0.9);
+  width: 100%;
+  background: white;
   border-collapse: collapse;
   margin: 0 auto;
 }
@@ -211,11 +209,9 @@ table {
 /*--------------SECTION----------------*/
 
 section {
-  background: grey;
-  -webkit-box-shadow: 10px 10px 64px 5px rgba(0,0,0,0.75);
-  -moz-box-shadow: 10px 10px 64px 5px rgba(0,0,0,0.75);
-  box-shadow: 10px 10px 64px 5px rgba(0,0,0,0.75);
-  border: 2px solid black;
+  width: 100%;
+  background: dimgrey;
+  border-bottom: 2px solid black;
 
 }
 
@@ -308,6 +304,8 @@ body {
 }
 
 .page-content-wrapper {
+
+  width: 60%;
   box-shadow: 0 0 10px 5px rgba(0,0,0,0.5);
 }
 
@@ -339,4 +337,47 @@ body {
   background-color: grey;
   width: 960px;
   margin-left: 157px;
+}
+
+.admin-table {
+  width: 80%;
+}
+
+.btn1 {
+  color: aquamarine;
+}
+
+/*-----------FORM---------------*/
+
+.frm-wrapper  {
+  width: 80%;
+  margin: 0 auto;
+}
+
+/*-----------Appointment Wrapper----------*/
+
+.appt-wrapper {
+  width: 75%;
+  color: grey;
+  background-color: rgba(0,0,0,0.8);
+  margin: 0 auto;
+  padding: 15px;
+  border: 1px solid white;
+  box-shadow: 0 0 10px 5px rgba(0,0,0,0.5);
+}
+
+/*--------Admin Caseworkers Wrapper---------------*/
+
+.admin-case {
+  width: 70%;
+  margin: 0 auto;
+}
+
+/*------------CLIENT DETAIL WRAPPER----------------*/
+
+.client-detail {
+  width: 85%;
+  margin: 0 auto;
+  background-color: white;
+  padding: 15px;
 }

@@ -1,23 +1,25 @@
 <nav ng-include="'/views/templates/nav.html'"></nav>
-    <div class=" col-md-9 col-md-push-1">d
+    <div class=" col-md-9 col-md-push-1">
       <section>
           <h1>Client Data</h1>
         <h3>Create New Client Account</h3>
       <!--Client creation form-->
         <form>
-          <label>New Client Email
+          <md-input-container>New Client Email
             <input type="email" ng-model="createClientEmail" required>
-          </label>
-          <button ng-click="submit()">Submit</button>
+          </md-input-container>
+          <md-button ng-click="submit()">Submit</md-button>
         </form>
       </section>
-      <div class="table">
-          <div class="table-container">
-              <table st-table="data" st-safe-src="rowCollection" class="admin-table">
+      <div class="table table-inverse">
+          <div>
+              <table st-table="data" st-safe-src="rowCollection">
                   <thead>
                   <tr class="search-filter">
                       <th class="search-filter" colspan="3">
+                          <md-input>
                           <input st-search placeholder="global search" class="input-sm form-control" type="search"/>
+                          </md-input>
                   </tr>
                   <tr>
                       <th st-sort="">First Name</th>
