@@ -5,15 +5,13 @@ var mongoose = require('mongoose');
 var appointmentService = require('../services/appointmentService');
 
 router.get('/', function(req, res, next) {
-  appointmentService.getAppointment(function(data){
+  appointmentService.getAppointment(function(data) {
     res.send(data);
   });
 
 });
 
 router.post('/', function(req, res, next) {
-  console.log('this works', req.body);
-
   if(Array.isArray(req.body)) {
     appointmentService.newMultiAppointment(req.body);
   } else {
@@ -23,12 +21,19 @@ router.post('/', function(req, res, next) {
   res.sendStatus(200);
 });
 
-router.put('/', function(req, res, next) {
-  res.send('');
+router.post('/update', function(req, res, next) {
+  console.log(req.body);
+  var response = {};
+
+  response = appointmentService.updateAppointment(req.body);
+  res.status(response.status).send(response.data);
+
 });
 
-router.delete('/', function(req, res, next) {
-  res.send('');
+router.delete('/:id', function(req, res, next) {
+  appointmentService.deleteAppointment(req.params.id);
+
+  res.send('delete route happend');
 });
 
 module.exports = router;

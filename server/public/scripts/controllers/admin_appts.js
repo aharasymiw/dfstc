@@ -6,54 +6,62 @@ app.controller('AdminApptsCtrl', ['$scope', '$http',
 
   $scope.getTableData = function() {
     $http.get('api/appointments').then(function(res) {
-      console.log(res);
       $scope.rowCollection = res.data;
       $scope.data = [].concat($scope.rowCollection);
-      console.log($scope.rowCollection);
     }, function(err) {
-      console.log(err.message);
     });
   };
 
   $scope.getTableData();
 
   $scope.form = {
-    recurrence: undefined
+    recurrence: undefined,
   };
 
   $scope.submit = function() {
+    console.log('time: ', $scope.form.startTime);
+    console.log('date: ', $scope.form.date);
     var data = checkRec();
     $http({
       method: 'POST',
       url: '/api/appointments',
-      data: data
+      data: data,
     }).then(function successCallback(response) {
-      console.log(response);
       $scope.getTableData();
     }, function errorCallback(response) {
-      console.log(response);
     });
   };
 
-  var checkRec = function(){
-    if($scope.form.recurrence != undefined) {
+  var checkRec = function() {
+    if($scope.form.recurrence !== undefined) {
       return apptRec.recur($scope.form);
     } else {
       return $scope.form;
     }
   };
 
-  $scope.removeItem = function removeItem(row) {
+  $scope.seeFullAppt = function(row) {
+    var index = $scope.rowCollection.indexOf(row);
+    if (index !== -1) {
+      console.log(row);
+    }
+  };
+
+  $scope.removeItem = function(row) {
     var index = $scope.rowCollection.indexOf(row);
     if (index !== -1) {
       $scope.rowCollection.splice(index, 1);
     }
-    console.log(row._id);
+
+    $http({
+      method: 'DELETE',
+      url: '/api/appointments/' + row._id
+    }).then(function successCallback(response) {
+    }, function errorCallback(response) {
+    });
+
   };
 
-  $scope.itemsByPage=15;
+  $scope.itemsByPage = 15;
 
-}]);
-
-//Controls the toggle of the side-menu bar
-
+},]);

@@ -9,19 +9,20 @@ var appointmentService = {
     var appointment = new Appointment(data);
     appointment.save(function(err) {
       if(err) {
-        console.log(err);
       }
     });
   },
+
   getAppointment: function(callback) {
-    Appointment.find({}, function(err, caseworkers) {
+    Appointment.find({}, function(err, appointments) {
       if(err) {
         callback({message: 'No records found'});
       } else {
-        callback(caseworkers);
+        callback(appointments);
       }
     });
   },
+
   newMultiAppointment: function(data) {
     Appointment.create(data, function(err, array) {
       if(err) {
@@ -30,6 +31,34 @@ var appointmentService = {
         return array;
       }
     });
+  },
+
+  deleteAppointment: function(data) {
+    var ObjectId = mongoose.Types.ObjectId;
+    var id = ObjectId(data);
+    Appointment.findByIdAndRemove(id, function(err) {
+      if(err) {
+      } else {
+      }
+    });
+  },
+
+  updateAppointment: function(data) {
+    Appointment.update({_id: data._id}, {title: 'Filled',
+    appointmentType: data.appointmentType, email: data.email},
+      function(err, num) {
+        if(err) {
+          console.log(err);
+          return {
+            status: err.status,
+            data: err.data
+          };
+        }
+      });
+    return {
+      status: 200,
+      data: 'appointment updated successfully'
+    };
   }
 };
 

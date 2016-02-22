@@ -4,10 +4,10 @@ var Schema = mongoose.Schema;
 
 var appointmentSchema = new Schema(
   {
-    title: {type: String, default: 'Open Time Slot'},
-      //Type will be left blank in the database until client fills it in.
+    title: {type: String, default: 'Open'},
+    //Type will be left blank in the database until client fills it in.
     appointmentType: {type: String, default: null},
-      //Email will be blank until the time slot is filled by a client
+    //Email will be blank until the time slot is filled by a client
     email: {type: String, default: null},
     date: Date,
     startTime: Date,
