@@ -11,7 +11,7 @@ router.get('/all', function(req, res, next) {
   });
 });
 
-router.post('/detail', function(req, res, err) {
+router.post('/details', function(req, res, err) {
   res.send('');
 });
 
