@@ -177,7 +177,11 @@
         <label></label>
         <input ng-model="clientArray.schedulingRestrictions" name="company-name">
       </md-input-container>
-      <md-button class="btn1" ng-click="updateClient()">Submit</md-button>
+      <div class="btn-toolbar">
+        <button type="button" class="btn btn-primary" ng-click="updateClient(clientArray)">Update Client</button>
+        <span class="col-sm-1"></span>
+        <button type="button" class="btn btn-danger" ng-click="deleteClient(clientArray._id)">Delete Client</button>
+      </div>
     </form>
 
 </div>

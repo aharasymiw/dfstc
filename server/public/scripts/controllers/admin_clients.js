@@ -17,13 +17,22 @@ app.controller('AdminClientsCtrl', ['$scope', '$http',
   );
   $scope.clientDetail = function(id) {
     $location.path('/admin/clients/details');
-    for(var i = 0; i < $scope.data.length; i++){
+    for(var i = 0; i < $scope.data.length; i++) {
       if($scope.data[i]._id === id){
         clientDetailService.data = $scope.data[i];
       }
     }
   };
-  $scope.removeClient = function(row) {
-
+  $scope.deleteClient = function(data) {
+    console.log(data);
+    $http({
+      method: 'DELETE',
+      url: 'api/clients/' + data
+    }).then(function successCallback(res) {
+        console.log(res);
+        $location.path('/admin/clients');
+    }, function errorCallback(res) {
+      console.log(res);
+    });
   }
 }]);
