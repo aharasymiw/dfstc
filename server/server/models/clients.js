@@ -23,8 +23,10 @@ var clientSchema = new Schema(
     clientBottomSize: String,
     clientShoeSize: String,
     clientRestrictions: String,
+    todayDate: Date,
     interviewStartDate: Date,
     employmentStartDate: Date,
+    internshipStartDate: Date,
     company: String,
     jobTitle: String,
     schedulingRestrictions: String

@@ -1,12 +1,15 @@
-@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css");
+
 /*----------------BODY-----------------*/
 body {
 
   font: 14px "Calibri", Helvetica, Arial, sans-serif;
+
+
 }
 
 .img-bkgrnd {
   width: 100%;
+  height: 100%;
 }
 
 a {
@@ -309,7 +312,7 @@ body {
   box-shadow: 0 0 10px 5px rgba(0,0,0,0.5);
 }
 
-#md-date-pane1 {
+#md-date-pane1, #md-date-pane21 {
   width: 346px;
 }
 
