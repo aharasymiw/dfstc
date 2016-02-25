@@ -53,6 +53,7 @@ var appointmentService = {
             data: err.data
           };
         }
+        console.log('Updated!');
       });
     return {
       status: 200,

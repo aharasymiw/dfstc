@@ -18,7 +18,7 @@ var clientService = {
       }
       callback(clients);
     });
-  },
+  }
 };
 
 module.exports = clientService;
