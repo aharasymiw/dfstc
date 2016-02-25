@@ -86,8 +86,8 @@
             </md-input-container>
 
             <h4>Appointment Date:</h4>
-            <div  ng-repeat="appointment in appointments">
-                <input type="radio" ng-model="form.appointment" value={{appointment._id}}>{{appointment.date | date}}
+            <div ng-repeat="appointment in appointments">
+                <input type="radio" name="appt" ng-model="form.appointment" value={{appointment._id}}>{{appointment.date | date}}
                 Time:{{appointment.startTime | date : 'h:mm a'}}
             </div>
             <h4>Client Suiting Information</h4>
