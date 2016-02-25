@@ -18,7 +18,24 @@ var clientService = {
       }
       callback(clients);
     });
-  },
+  }
+  //updateClient: function(data) {
+  //  Client.update({_id: data._id}, {title: 'Filled',
+  //        appointmentType: data.appointmentType, email: data.email},
+  //      function(err, num) {
+  //        if(err) {
+  //          console.log(err);
+  //          return {
+  //            status: err.status,
+  //            data: err.data
+  //          };
+  //        }
+  //      });
+  //  return {
+  //    status: 200,
+  //    data: 'appointment updated successfully'
+  //  };
+  //}
 };
 
 module.exports = clientService;
