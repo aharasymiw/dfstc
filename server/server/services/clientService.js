@@ -38,20 +38,14 @@ var clientService = {
     };
   },
   deleteClient: function(data) {
-    Client.remove({_id: data._id},
-        function(err) {
-          if(err) {
-            console.log(err);
-            return {
-              status: err.status,
-              data: err.data
-            };
-          }
-        });
-    return {
-      status: 200,
-      data: 'client deleted successfully'
-    };
+    var ObjectId = mongoose.Types.ObjectId;
+    var id = ObjectId(data);
+    console.log(id);
+    Client.findByIdAndRemove(id, function(err) {
+      if(err) {
+      } else {
+      }
+    });
   }
 };
 
