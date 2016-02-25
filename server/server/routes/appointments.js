@@ -30,11 +30,10 @@ router.post('/update', function(req, res, next) {
 
 });
 
-router.delete('/', function(req, res, next) {
-  console.log(req);
-  appointmentService.deleteAppointment(req.body);
+router.delete('/:id', function(req, res, next) {
+  appointmentService.deleteAppointment(req.params.id);
 
-  res.send('');
+  res.send('delete route happend');
 });
 
 module.exports = router;
