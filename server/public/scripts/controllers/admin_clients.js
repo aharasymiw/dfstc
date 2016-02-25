@@ -23,10 +23,7 @@ app.controller('AdminClientsCtrl', ['$scope', '$http',
       }
     }
   };
-  $scope.updateClient = function(data) {
-    $http({
-      method: 'PUT',
-      url: '/'
-    })
-  };
+  $scope.removeClient = function(row) {
+
+  }
 }]);
