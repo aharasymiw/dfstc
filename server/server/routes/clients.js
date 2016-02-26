@@ -26,7 +26,8 @@ router.put('/', function(req, res, next) {
 });
 
 router.delete('/:id', function(req, res, next) {
-  clientService.deleteClient(req.params._id);
+  console.log('req.params.id:', req.params.id);
+  clientService.deleteClient(req.params.id);
   res.send('Client Successfully Deleted');
 });
 
