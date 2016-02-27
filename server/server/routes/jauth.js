@@ -15,7 +15,7 @@ router.post('/client', function(req, res, next) {
   var user = new User({
     email: req.body.email,
     password: req.body.password,
-    type: client
+    type: type
   });
 
   user.save(function(err) {

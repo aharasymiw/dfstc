@@ -1,11 +1,11 @@
 app.controller('NavCtrl', ['$scope', '$http', 'store',
 
-'$location', function($scope, $http, store, $location, authService) {
+'$location', 'authService', function($scope, $http, store, $location, authService) {
 
 
   $scope.logout = function() {
     alert('logged out');
-    authService.logout();
+    //authService.logout();
     $location.path('/login');
   };
 }]);

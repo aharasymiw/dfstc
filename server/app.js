@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
 
-//app.use('/api/*', jwt({secret: 'supersecret'}));
+app.use('/api/*', jwt({secret: 'supersecret'}));
 
 app.use('/api/appointments', authCheck(), appointments);
 app.use('/api/caseworkers', authCheck(), caseworkers);
