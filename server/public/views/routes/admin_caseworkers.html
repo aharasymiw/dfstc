@@ -1,24 +1,38 @@
 <nav ng-include="'/views/templates/nav.html'"></nav>
 
-<section class=" col-md-9 col-md-push-1">
-  <h2>Welcome to the Admin Caseworkers Page</h2>
-  <form>
-    <h3>New Caseworker</h3>
-    <label>First Name</label>
-    <input ng-model="form.cwFirstName" type="textbox">
-    <label>Last Name</label>
-    <input ng-model="form.cwLastName" type="textbox">
-    <label>Caseworker Email</label>
-    <input ng-model="form.cwEmail" type="email" required>
-    <label>Caseworker Organization</label>
-    <input ng-model="form.cwOrg" type="textbox">
-    <br/>
-    <button ng-click="submit()">Submit</button>
-  </form>
 
-  <!--Smart table listing caseworkers goes here-->
+  <div class="admin-case">
+    <div layout="column" ng-cloak class="md-inline-form">
+      <md-content layout-padding>
+        <form name="userform">
+          <div layout-gt-lg="row">
+            <h3>New Caseworker</h3>
+            <md-input-container class="md-block">
+              <label>First Name</label>
+              <input ng-model="form.cwFirstName" type="textbox">
+            </md-input-container>
+            <md-input-container class="md-block">
+              <label>Last Name</label>
+              <input ng-model="form.cwLastName" type="textbox">
+            </md-input-container>
+            <md-input-container class="md-block">
+              <label>Caseworker Email</label>
+              <input ng-model="form.cwEmail" type="email" required>
+            </md-input-container>
+            <md-input-container class="md-block">
+              <label>Caseworker Organization</label>
+              <input ng-model="form.cwOrg" type="textbox">
+            </md-input-container>
+            <button ng-click="submit()">Submit</button>
+          </div>
+        </form>
+      </md-content>
+    </div>
+  </div>
+
   <div class="table">
-    <div class="table-container">
+    <div>
+      <br/>
       <table st-table="data" st-safe-src="rowCollection" class="admin-table">
         <thead>
         <!--Search bar-->
@@ -54,4 +68,4 @@
       </table>
     </div>
   </div>
-</section>
+

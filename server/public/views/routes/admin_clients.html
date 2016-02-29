@@ -1,61 +1,55 @@
 <nav ng-include="'/views/templates/nav.html'"></nav>
-<div class=" col-md-9 col-md-push-1">
-  <section>
-      <h1>Client Data</h1>
-    <h3>Create New Client Account</h3>
-  <!--Client creation form-->
-    <form>
-      <label>New Client Email
-        <input type="email" ng-model="createClientEmail" required>
-      </label>
-      <button ng-click="submit()">Submit</button>
-    </form>
-  </section>
-  <div>
-    <button ng-click="">Export Data</button>
-  </div>
-  <div class="table">
-      <div class="table-container">
-          <table st-table="data" st-safe-src="rowCollection" class="admin-table">
-              <thead>
-              <tr class="search-filter">
-                  <th class="search-filter" colspan="3">
-                      <input st-search placeholder="global search" class="input-sm form-control" type="search"/>
-              </tr>
-              <tr>
-                  <th st-sort="">First Name</th>
-                  <th st-sort="">Last Name</th>
-                  <th st-sort="">City</th>
-                  <th st-sort="">State</th>
-                  <th st-sort="">Zip</th>
-                  <th st-sort="">Edit</th>
-                  <th st-sort=""></th>
-                  <th st-sort=""></th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr ng-repeat="client in data">
-                  <td>{{client.clientFirstName}}</td>
-                  <td>{{client.clientLastName}}</td>
-                  <td>{{client.clientCity}}</td>
-                  <td>{{client.clientState}}</td>
-                  <td>{{client.clientZip}}</td>
-                  <td>
-                      <button ng-click="clientDetail(client._id)" type="button" class="btn btn-sm btn-default">
-                          <i class="glyphicon glyphicon-edit">
-                          </i>
-                      </button>
-                  </td>
-              </tr>
-              </tbody>
-              <tfoot>
-                <tr class="foottr">
-                    <td colspan="5" class="text-center">
-                        <div st-items-by-page="50" st-pagination="" st-template="views/templates/pagination.html"></div>
-                    </td>
-                </tr>
-              </tfoot>
-          </table>
-      </div>
-  </div>
-</div>
+
+    <div class=" col-md-9 col-md-push-1">
+      <section>
+          <h1>Client Data</h1>
+        <h3>Create New Client Account</h3>
+      <!--Client creation form-->
+        <form>
+          <md-input-container>New Client Email
+            <input type="email" ng-model="createClientEmail" required>
+          </md-input-container>
+          <md-button ng-click="submit()">Submit</md-button>
+        </form>
+      </section>
+      <div class="table table-inverse">
+          <div>
+              <table st-table="data" st-safe-src="rowCollection">
+                  <thead>
+                  <tr class="search-filter">
+                      <th class="search-filter" colspan="3">
+                          <md-input>
+                          <input st-search placeholder="global search" class="input-sm form-control" type="search"/>
+                          </md-input>
+                  </tr>
+                  <tr>
+                      <th st-sort="">First Name</th>
+                      <th st-sort="">Last Name</th>
+                      <th st-sort="">City</th>
+                      <th st-sort="">State</th>
+                      <th st-sort="">Zip</th>
+                      <th st-sort=""></th>
+                      <th st-sort=""></th>
+                      <th st-sort=""></th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr ng-repeat="client in data">
+                      <td>{{client.clientFirstName}}</td>
+                      <td>{{client.clientLastName}}</td>
+                      <td>{{client.clientCity}}</td>
+                      <td>{{client.clientState}}</td>
+                      <td>{{client.clientZip}}</td>
+                  </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr class="foottr">
+                        <td colspan="5" class="text-center">
+                            <div st-items-by-page="50" st-pagination="" st-template="views/templates/pagination.html"></div>
+                        </td>
+                    </tr>
+                  </tfoot>
+              </table>
+          </div>
+        </div>
+    </div>
