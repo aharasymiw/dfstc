@@ -14,7 +14,7 @@ app.controller('FormCtrl', ['$scope', '$http', 'store', function($scope, $http, 
     $scope.onlyWeekendsPredicate = function(date) {
       var day = date.getDay();
       return day === 0 || day === 6;
-    }
+    };
 
   var retrieveAppointments = function() {
     $http({

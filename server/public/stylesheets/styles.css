@@ -200,7 +200,7 @@ label {
 /*Admin table styles*/
 table {
   width: 100%;
-  background: white;
+  background: #B5B5B5;
   border-collapse: collapse;
   margin: 0 auto;
 }
@@ -213,8 +213,10 @@ table {
 
 section {
   width: 100%;
-  background: dimgrey;
+  background: white;
   border-bottom: 2px solid black;
+  padding-left: 32px;
+  padding-top: 10px;
 
 }
 
@@ -312,29 +314,210 @@ body {
   box-shadow: 0 0 10px 5px rgba(0,0,0,0.5);
 }
 
-#md-date-pane1, #md-date-pane21 {
+#md-date-pane1,
+#md-date-pane2,
+#md-date-pane3,
+#md-date-pane4,
+#md-date-pane5,
+#md-date-pane6,
+#md-date-pane7,
+#md-date-pane8,
+#md-date-pane9,
+#md-date-pane10,
+#md-date-pane11,
+#md-date-pane12,
+#md-date-pane13,
+#md-date-pane14,
+#md-date-pane15,
+#md-date-pane16,
+#md-date-pane17,
+#md-date-pane18,
+#md-date-pane19,
+#md-date-pane20,
+#md-date-pane21,
+#md-date-pane22,
+#md-date-pane23,
+#md-date-pane24,
+#md-date-pane25,
+#md-date-pane26,
+#md-date-pane27,
+#md-date-pane28,
+#md-date-pane29,
+#md-date-pane30,
+#md-date-pane31,
+#md-date-pane32,
+#md-date-pane33,
+#md-date-pane34,
+#md-date-pane35,
+#md-date-pane36,
+#md-date-pane37,
+#md-date-pane38,
+#md-date-pane39,
+#md-date-pane40,
+#md-date-pane41,
+#md-date-pane42,
+#md-date-pane43,
+#md-date-pane44,
+#md-date-pane45,
+#md-date-pane46,
+#md-date-pane47,
+#md-date-pane48,
+#md-date-pane49,
+#md-date-pane50,
+#md-date-pane51,
+#md-date-pane52,
+#md-date-pane53,
+#md-date-pane54,
+#md-date-pane55,
+#md-date-pane56,
+#md-date-pane57,
+#md-date-pane58,
+#md-date-pane59,
+#md-date-pane60,
+#md-date-pane61,
+#md-date-pane62,
+#md-date-pane63,
+#md-date-pane64,
+#md-date-pane65,
+#md-date-pane66,
+#md-date-pane67,
+#md-date-pane68,
+#md-date-pane69,
+#md-date-pane70,
+#md-date-pane71,
+#md-date-pane72,
+#md-date-pane73,
+#md-date-pane74,
+#md-date-pane75,
+#md-date-pane76,
+#md-date-pane77,
+#md-date-pane78,
+#md-date-pane79,
+#md-date-pane80,
+#md-date-pane81,
+#md-date-pane82,
+#md-date-pane83,
+#md-date-pane84,
+#md-date-pane85,
+#md-date-pane86,
+#md-date-pane87,
+#md-date-pane88,
+#md-date-pane89,
+#md-date-pane90,
+#md-date-pane91,
+#md-date-pane92,
+#md-date-pane93,
+#md-date-pane94,
+#md-date-pane95,
+#md-date-pane96,
+#md-date-pane97,
+#md-date-pane98,
+#md-date-pane99,
+#md-date-pane100,
+#md-date-pane101,
+#md-date-pane102,
+#md-date-pane103,
+#md-date-pane104,
+#md-date-pane105,
+#md-date-pane106,
+#md-date-pane107,
+#md-date-pane108,
+#md-date-pane109,
+#md-date-pane110,
+#md-date-pane111,
+#md-date-pane112,
+#md-date-pane113,
+#md-date-pane114,
+#md-date-pane115,
+#md-date-pane116,
+#md-date-pane117,
+#md-date-pane118,
+#md-date-pane119,
+#md-date-pane120,
+#md-date-pane121,
+#md-date-pane122,
+#md-date-pane123,
+#md-date-pane124,
+#md-date-pane125,
+#md-date-pane126,
+#md-date-pane127,
+#md-date-pane128,
+#md-date-pane129,
+#md-date-pane130,
+#md-date-pane131,
+#md-date-pane132,
+#md-date-pane133,
+#md-date-pane134,
+#md-date-pane135,
+#md-date-pane136,
+#md-date-pane137,
+#md-date-pane138,
+#md-date-pane139,
+#md-date-pane140,
+#md-date-pane141,
+#md-date-pane142,
+#md-date-pane143,
+#md-date-pane144,
+#md-date-pane145,
+#md-date-pane146,
+#md-date-pane147,
+#md-date-pane148,
+#md-date-pane149,
+#md-date-pane150,
+#md-date-pane151,
+#md-date-pane152,
+#md-date-pane153,
+#md-date-pane154,
+#md-date-pane155,
+#md-date-pane156,
+#md-date-pane157,
+#md-date-pane158,
+#md-date-pane159,
+#md-date-pane160,
+#md-date-pane161,
+#md-date-pane162,
+#md-date-pane163,
+#md-date-pane164,
+#md-date-pane165,
+#md-date-pane166,
+#md-date-pane167,
+#md-date-pane168,
+#md-date-pane169,
+#md-date-pane170,
+#md-date-pane171,
+#md-date-pane172,
+#md-date-pane173,
+#md-date-pane174,
+#md-date-pane175,
+#md-date-pane176,
+#md-date-pane177,
+#md-date-pane178,
+#md-date-pane179,
+#md-date-pane180,
+#md-date-pane181,
+#md-date-pane182,
+#md-date-pane183,
+#md-date-pane184,
+#md-date-pane185,
+#md-date-pane186,
+#md-date-pane187,
+#md-date-pane188,
+#md-date-pane189,
+#md-date-pane190,
+#md-date-pane191,
+#md-date-pane192,
+#md-date-pane193,
+#md-date-pane194,
+#md-date-pane195,
+#md-date-pane196,
+#md-date-pane197,
+#md-date-pane198,
+#md-date-pane199,
+#md-date-pane200
+{
   width: 346px;
 }
 
-#md-date-pane19 {
-  width: 346px;
-}
-
-#md-date-pane20 {
-  width: 346px;
-}
-
-#md-date-pane75 {
-  width: 346px;
-}
-
-#md-date-pane93 {
-  width: 346px;
-}
-
-#md-date-pane94 {
-  width: 346px;
-}
 
 .case-tab {
   background-color: grey;
@@ -347,7 +530,11 @@ body {
 }
 
 .btn1 {
-  color: aquamarine;
+  color: whitesmoke;
+  background-color: #9F2226;
+  margin: 9px 0 10px 5px;
+  font-size: 22px;
+  box-shadow: 0 0 4px 2px black;
 }
 
 /*-----------FORM---------------*/
