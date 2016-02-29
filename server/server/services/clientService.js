@@ -19,34 +19,54 @@ var clientService = {
       callback(clients);
     });
   },
-  updateClient: function(data) {
-    Client.update({_id: data._id}, {
 
-    },
-        function(err, num) {
-          if(err) {
-            console.log(err);
-            return {
-              status: err.status,
-              data: err.data
-            };
-          }
-        });
-    return {
-      status: 200,
-      data: 'client updated successfully'
+  editClient: function(data) {
+    console.log('made it to editClient');
+    console.log('heres the first name: ' + data.clientFirstName);
+    var ObjectId = mongoose.Types.ObjectId;
+    var id = ObjectId(data._id);
+    var findUpdates = function() {
+
     };
+
+    Client.update({_id: id}, {
+      clientFirstName: data.clientFirstName,
+      clientLastName: data.clientLastName,
+      clientStreetL1: data.clientStreetL1,
+      clientStreetL2: data.clientStreetL2,
+      clientCity: data.clientCity,
+      clientState: data.clientState,
+      clientZip: data.clientZip,
+      clientHomePh: data.clientHomePh,
+      clientCellPh: data.clientCellPh,
+      clientEmail: data.clientEmail,
+      altContactName: data.altContactName,
+      altContactPh: data.altContactPh,
+      altContactRel: data.altContactRel,
+      clientAge: data.clientAge,
+      clientHeight: data.clientHeight,
+      clientTopSize: data.clientTopSize,
+      clientBottomSize: data.clientBottomSize,
+      clientShoeSize: data.clientShoeSize,
+      clientRestrictions: data.clientRestrictions,
+      interviewStartDate: data.interviewStartDate,
+      employmentStartDate: data.employmentStartDate,
+      company: data.company,
+      jobTitle: data.jobTitle,
+      schedulingRestrictions: data.schedulingRestrictions
+    }, function catchError(err){
+      console.log(err);
+    });
   },
+
   deleteClient: function(data) {
-    console.log('id #1:', data);
     var ObjectId = mongoose.Types.ObjectId;
     var id = ObjectId(data);
-    console.log('id #2:', id);
     Client.findByIdAndRemove(id, function(err) {
       if(err) {
         console.log('DB Error: ', err);
       } else {
-        console.log('DB Success');
+        alert('Client Account Deleted');
       }
     });
   }

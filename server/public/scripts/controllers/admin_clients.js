@@ -23,6 +23,17 @@ app.controller('AdminClientsCtrl', ['$scope', '$http',
       }
     }
   };
+  $scope.editClient = function(data) {
+    $http({
+      method: 'PUT',
+      url: 'api/clients/',
+      data: data
+    }).then(function successCallback(res) {
+      console.log(res);
+    }, function errorCallback(res) {
+      console.log(res);
+    });
+  };
   $scope.deleteClient = function(data) {
     $http({
       method: 'DELETE',
@@ -32,5 +43,5 @@ app.controller('AdminClientsCtrl', ['$scope', '$http',
     }, function errorCallback(res) {
       console.log(res);
     });
-  }
+  };
 }]);
