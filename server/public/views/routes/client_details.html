@@ -3,11 +3,56 @@
 
 <div layout="column" ng-cloak class="md-inline-form">
 
-
-<div class="client-detail">
-  <h2>Welcome to the Client Details Page</h2>
-  <p>The Admin will see details about a selected client on this page.</p>
-  <p>They can update or delete the client.</p>
-  <p>There is a back button to link back to the admin_clients.html page.</p>
-</div>
-
+  </select>
+      </label><br><br>
+      <label>Select your shoe size:
+        <select ng-model="clientArray.clientShoeSize">
+          <option value="5.5">5.5</option>
+          <option value="6">6</option>
+          <option value="6.5">6.5</option>
+          <option value="7">7</option>
+          <option value="7.5">7.5</option>
+          <option value="8">8</option>
+          <option value="8.5">8.5</option>
+          <option value="9">9</option>
+          <option value="9.5">9.5</option>
+          <option value="10">10</option>
+          <option value="10.5">10.5</option>
+          <option value="11">11</option>
+          <option value="11.5">11.5</option>
+          <option value="12">12</option>
+          <option value="12.5">12.5</option>
+          <option value="13">13</option>
+        </select>
+      </label>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Restrictions</label>
+        <input ng-model="clientArray.clientRestrictions" name="clothing-restrictions">
+        <p>e.g. Unable to wear high-heels, must wear hijab...</p>
+      </md-input-container>
+      <p>First Interview Date</p>
+      <md-datepicker ng-model="clientArray.interviewStartDate" md-placeholder="interview-date">
+      </md-datepicker><br><br>
+      <p>Employment Start Date</p>
+      <md-datepicker ng-model="clientArray.employmentStartDate" md-placeholder="employment-start">
+      </md-datepicker>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Company</label>
+        <input ng-model="clientArray.company" name="company-name">
+      </md-input-container>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Job Title</label>
+        <input ng-model="clientArray.jobTitle" name="job-title">
+      </md-input-container>
+      <md-input-container class="md-block" flex-gt-sm>
+        <p>Does your client have any scheduling restrictions?</p>
+        <label></label>
+        <input ng-model="clientArray.schedulingRestrictions" name="company-name">
+      </md-input-container>
+      <div class="btn-toolbar">
+        <button type="button" class="btn btn-primary" ng-click="editClient(clientArray)">Update Client</button>
+        <span class="col-sm-1"></span>
+        <button type="button" class="btn btn-danger" ng-click="deleteClient(clientArray._id)">Delete Client</button>
+      </div>
+    </form>
+    </div>

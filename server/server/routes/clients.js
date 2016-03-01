@@ -11,22 +11,15 @@ router.get('/all', function(req, res, next) {
   });
 });
 
-router.post('/detail', function(req, res, err) {
-  res.send('');
-});
-
-router.post('/', function(req, res, next) {
-  clientService.newClient(req.body);
-  res.sendStatus(200);
-
-});
-
 router.put('/', function(req, res, next) {
-  res.send('');
+  clientService.editClient(req.body);
+  res.send('Client Successfully Updated');
 });
 
-router.delete('/', function(req, res, next) {
-  res.send('');
+router.delete('/:id', function(req, res, next) {
+  console.log('req.params.id:', req.params.data);
+  clientService.deleteClient(req.params.id);
+  res.send('Client Successfully Deleted');
 });
 
 module.exports = router;
