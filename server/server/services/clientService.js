@@ -21,15 +21,10 @@ var clientService = {
   },
 
   editClient: function(data) {
-    console.log('made it to editClient');
-    console.log('heres the first name: ' + data.clientFirstName);
     var ObjectId = mongoose.Types.ObjectId;
     var id = ObjectId(data._id);
-    var findUpdates = function() {
-
-    };
-
-    Client.update({_id: id}, {
+    //Object containing all the fields in the form, set equal to the data value.
+    var clientUpdate = {
       clientFirstName: data.clientFirstName,
       clientLastName: data.clientLastName,
       clientStreetL1: data.clientStreetL1,
@@ -54,7 +49,17 @@ var clientService = {
       company: data.company,
       jobTitle: data.jobTitle,
       schedulingRestrictions: data.schedulingRestrictions
-    }, function catchError(err){
+    };
+    //Loop to remove undefined values from clientUpdate object to prevent database errors
+    for(prop in clientUpdate) {
+      //If the property is undefined, delete it from the clientUpdate object
+      if(clientUpdate[prop] === undefined) {
+        delete clientUpdate[prop];
+      }
+    };
+
+    //Once loop is complete, update document with matching id using the clientUpdate object
+    Client.update({_id: id}, clientUpdate, function catchError(err){
       console.log(err);
     });
   },
