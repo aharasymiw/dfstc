@@ -19,7 +19,7 @@ module.exports = function() {
     var token = getToken(req);
 
     jwt.verify(token, 'supersecret', function(err, decoded) {
-      console.log(decoded.type); // bar
+      console.log(decoded.type); // returns objects in payload
     });
 
     next();
