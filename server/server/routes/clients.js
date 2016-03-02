@@ -11,7 +11,11 @@ router.get('/all', function(req, res, next) {
   });
 });
 
-router.put('/', function(req, res, next) {
+router.post('/', function(req, res, next) {
+  clientService.newClient(req.body);
+});
+
+router.put('/edit', function(req, res, next) {
   clientService.editClient(req.body);
   res.send('Client Successfully Updated');
 });

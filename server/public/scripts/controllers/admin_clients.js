@@ -26,22 +26,26 @@ app.controller('AdminClientsCtrl', ['$scope', '$http',
   $scope.editClient = function(data) {
     $http({
       method: 'PUT',
-      url: 'api/clients/',
+      url: 'api/clients/edit',
       data: data
     }).then(function successCallback(res) {
       console.log(res);
+      alert('Client Successfully Updated');
     }, function errorCallback(res) {
       console.log(res);
     });
   };
   $scope.deleteClient = function(data) {
-    $http({
-      method: 'DELETE',
-      url: 'api/clients/' + data
-    }).then(function successCallback(res) {
+    var confirmation = confirm('Delete this client?');
+    if(confirmation) {
+      $http({
+        method: 'DELETE',
+        url: 'api/clients/' + data
+      }).then(function successCallback(res) {
         $location.path('/admin/clients');
-    }, function errorCallback(res) {
-      console.log(res);
-    });
+      }, function errorCallback(res) {
+        console.log(res);
+      });
+    }
   };
 }]);
