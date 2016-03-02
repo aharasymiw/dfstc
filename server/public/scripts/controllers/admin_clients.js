@@ -26,7 +26,7 @@ app.controller('AdminClientsCtrl', ['$scope', '$http',
   $scope.editClient = function(data) {
     $http({
       method: 'PUT',
-      url: 'api/clients/',
+      url: 'api/clients/edit',
       data: data
     }).then(function successCallback(res) {
       console.log(res);

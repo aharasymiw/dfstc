@@ -40,6 +40,12 @@
                       <td>{{client.clientCity}}</td>
                       <td>{{client.clientState}}</td>
                       <td>{{client.clientZip}}</td>
+                      <td>
+                          <button ng-click="clientDetail(client._id)" type="button" class="btn btn-sm btn-default">
+                              <i class="glyphicon glyphicon-edit">
+                              </i>
+                          </button>
+                      </td>
                   </tr>
                   </tbody>
                   <tfoot>
