@@ -22,13 +22,12 @@ module.exports = function() {
       res.redirect('/#/home');
     } else {
       jwt.verify(token, 'supersecret', function(err, decoded) {
-        console.log(decoded.type); // returns objects in payload
+        if(decoded.type === 'admin') {
+          next();
+        } else {
+          next();
+        }
       });
     }
-
-    console.log(req.baseUrl);
-
-    next();
   };
-
 };
