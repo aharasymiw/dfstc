@@ -18,9 +18,15 @@ module.exports = function() {
 
     var token = getToken(req);
 
-    jwt.verify(token, 'supersecret', function(err, decoded) {
-      console.log(decoded.type); // returns objects in payload
-    });
+    if(token === null) {
+      res.redirect('/#/home');
+    } else {
+      jwt.verify(token, 'supersecret', function(err, decoded) {
+        console.log(decoded.type); // returns objects in payload
+      });
+    }
+
+    console.log(req.baseUrl);
 
     next();
   };

@@ -7,12 +7,13 @@ app.controller('HomeCtrl', ['$scope', '$http',
       data: $scope.form
     }).then(function successCallback(response) {
       authService.saveToken(response.data);
+      console.log(response.data);
 
       // redirect to projects page
       $location.path('/form');
 
     }, function errorCallback(response) {
-      console.log(response);
+      alert(response.data);
     });
   };
 }]);

@@ -1,8 +1,9 @@
 var app = angular.module('app', ['angular-storage', 'ngMaterial', 'angular-jwt', 'smart-table', 'ngRoute']);
 
+
 app.config(['$routeProvider', '$locationProvider',
-'$httpProvider', 'jwtInterceptorProvider', function(
-$routeProvider, $locationProvider, $httpProvider, jwtInterceptorProvider) {
+'$httpProvider', function(
+$routeProvider, $locationProvider, $httpProvider) {
 
   $routeProvider.
     when('/admin/appts', {
@@ -19,7 +20,7 @@ $routeProvider, $locationProvider, $httpProvider, jwtInterceptorProvider) {
       controller: 'AdminClientsCtrl'
     }).when('/form', {
       templateUrl: '../views/routes/form.html',
-      controller: 'FormCtrl'
+      controller: 'FormCtrl',
     }).when('/home', {
       templateUrl: '../views/routes/home.html',
       controller: 'HomeCtrl'
