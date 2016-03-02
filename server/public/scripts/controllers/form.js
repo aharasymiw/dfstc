@@ -36,7 +36,7 @@ app.controller('FormCtrl', ['$scope', '$http', 'store', function($scope, $http, 
       saveClient();
       console.log(response);
     }, function errorCallback(response) {
-      alert(response);
+      console.log(response);
     });
   };
 

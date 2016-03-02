@@ -9,10 +9,6 @@
 
             <md-content layout-padding>
                 <form name="userForm">
-                    <h4>Today's Date</h4>
-                    <time-date-picker ng-model="dateValue"></time-date-picker>
-                    <md-datepicker ng-model="form.todayDate" md-placeholder="Enter date"></md-datepicker>
-
                     <div layout-gt-sm="row">
                         <md-input-container class="md-block" flex-gt-sm>
                             <label>First name</label>
@@ -77,7 +73,7 @@
                     </md-input-container>
                     <md-input-container md-no-float class="md-block">
                         <md-icon md-svg-src="assets/ic_phone_24px.svg"></md-icon>
-                        <input ng-model="form.clientContactPh" type="number" placeholder="Phone Number">
+                        <input ng-model="form.altContactPh" type="number" placeholder="Phone Number">
                     </md-input-container>
 
                     <md-input-container class="md-block" flex-gt-sm>
