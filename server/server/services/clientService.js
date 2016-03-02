@@ -72,7 +72,7 @@ var clientService = {
       if(err) {
         console.log('DB Error: ', err);
       } else {
-        alert('Client Account Deleted');
+        console.log('Client Account Deleted');
       }
     });
   }
