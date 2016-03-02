@@ -30,7 +30,6 @@ var clientSchema = new Schema(
     company: String,
     jobTitle: String,
     schedulingRestrictions: String
-
   }
 );
 

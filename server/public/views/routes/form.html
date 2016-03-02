@@ -82,7 +82,7 @@
                     </md-input-container>
 
                     <h4>Appointment Date:</h4>
-                    <div  ng-repeat="appointment in appointments">
+                    <div  ng-repeat="appointment in appointments | limitTo:20 | orderBy: '+date'">
                         <input type="radio" ng-model="form.appointment" value={{appointment._id}}>{{appointment.date | date}}
                         Time:{{appointment.startTime | date : 'h:mm a'}}
                     </div>
