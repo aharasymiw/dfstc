@@ -12,7 +12,6 @@ router.get('/all', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-  console.log(req.body);
   clientService.newClient(req.body);
 });
 
