@@ -20,6 +20,7 @@ var clientService = {
     });
   },
   editClient: function(data) {
+    //Converts data._id into an id type, which can query mongo database.
     var ObjectId = mongoose.Types.ObjectId;
     var id = ObjectId(data._id);
     //Object containing all the fields in the form, set equal to the data value.
@@ -70,7 +71,7 @@ var clientService = {
       if(err) {
         console.log('DB Error: ', err);
       } else {
-        alert('Client Account Deleted');
+        console.log('Client Account Deleted');
       }
     });
   }

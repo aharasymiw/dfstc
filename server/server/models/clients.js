@@ -18,19 +18,18 @@ var clientSchema = new Schema(
     altContactPh: Number,
     altContactRel: String,
     clientAge: Number,
-    clientHeight: String,
+    clientHeight: Number,
     clientTopSize: String,
     clientBottomSize: String,
     clientShoeSize: String,
     clientRestrictions: String,
-    todayDate: Date,
+    todayDate: {type: Date, default: Date.now},
     interviewStartDate: Date,
     employmentStartDate: Date,
     internshipStartDate: Date,
     company: String,
     jobTitle: String,
     schedulingRestrictions: String
-
   }
 );
 
