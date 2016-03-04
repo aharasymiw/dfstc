@@ -20,18 +20,13 @@ app.controller('AdminApptsCtrl', ['$scope', '$http',
 
   $scope.submit = function() {
     var data = checkRec();
-    console.log(data);
     $http({
       method: 'POST',
       url: '/api/appointments',
       data: data
     }).then(function successCallback(res) {
-      console.log('Status: ', res.status);
-      console.log('Data: ', res.data);
       $scope.getTableData();
     }, function errorCallback(err) {
-      console.log('Status: ', err.status);
-      console.log('Data: ', err.data);
     });
   };
 
@@ -59,11 +54,7 @@ app.controller('AdminApptsCtrl', ['$scope', '$http',
       method: 'DELETE',
       url: '/api/appointments/' + row._id
     }).then(function successCallback(res) {
-      console.log('Status: ', res.status);
-      console.log('Data: ', res.data);
     }, function errorCallback(err) {
-      console.log('Status: ', err.status);
-      console.log('Data: ', err.data);
     });
 
   };
