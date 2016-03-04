@@ -1,6 +1,5 @@
 app.controller('FormCtrl', ['$scope', '$http', 'store', function($scope, $http, store) {
 
-
   {
     $scope.myDate = new Date();
     $scope.minDate = new Date(
@@ -16,7 +15,7 @@ app.controller('FormCtrl', ['$scope', '$http', 'store', function($scope, $http, 
       return day === 0 || day === 6;
     };
 
-  var retrieveAppointments = function() {
+    var retrieveAppointments = function() {
     $http({
       method: 'GET',
       url: '/api/appointments'
@@ -27,7 +26,7 @@ app.controller('FormCtrl', ['$scope', '$http', 'store', function($scope, $http, 
     });
   };
 
-  var updateAppointments = function() {
+    var updateAppointments = function() {
     $http({
       method: 'POST',
       url: '/api/appointments/update',
@@ -40,7 +39,7 @@ app.controller('FormCtrl', ['$scope', '$http', 'store', function($scope, $http, 
     });
   };
 
-  var saveClient = function() {
+    var saveClient = function() {
     console.log('FIRE!!!');
     $http({
       method: 'POST',
@@ -54,11 +53,12 @@ app.controller('FormCtrl', ['$scope', '$http', 'store', function($scope, $http, 
 
   };
 
-  retrieveAppointments();
+    retrieveAppointments();
 
-  $scope.submit = function() {
+    $scope.submit = function() {
     updateAppointments();
-  }};
+  };
+  };
 
   $scope.states = ('AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS ' +
   'MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI ' +
@@ -72,6 +72,3 @@ app.controller('FormCtrl', ['$scope', '$http', 'store', function($scope, $http, 
       .primaryPalette('yellow')
       .dark();
 });
-
-
-

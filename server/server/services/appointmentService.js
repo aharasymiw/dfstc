@@ -4,61 +4,76 @@
 var mongoose = require('mongoose');
 var Appointment = require('../models/appointments');
 
-var appointmentService = {
-  newAppointment: function(data) {
-    var appointment = new Appointment(data);
-    appointment.save(function(err) {
-      if(err) {
-      }
-    });
-  },
+var response = {};
 
-  getAppointment: function(callback) {
+var appointmentService = {
+
+  getAppointment: function(answer) {
     Appointment.find({}, function(err, appointments) {
       if(err) {
-        callback({message: 'No records found'});
-      } else {
-        callback(appointments);
+        response.status = err.status;
+        response.data = err.message;
+        answer(response);
       }
-    });
+      response.status = '200';
+      response.data = appointments;
+      answer(response);
+    }).sort({date: 1});
   },
 
-  newMultiAppointment: function(data) {
-    Appointment.create(data, function(err, array) {
-      if(err) {
-        return err;
-      }else {
-        return array;
-      }
-    });
+  newAppointment: function(data, answer) {
+    if (typeof data[1] === 'object') {
+      Appointment.insertMany(data, function(err) {
+        if(err) {
+          response.status = err.status;
+          response.data = err.message;
+          answer(response);
+        }
+        response.status = '200';
+        response.data = 'New Appointment Slots Created';
+        answer(response);
+      });
+    } else {
+      Appointment.create(data, function(err) {
+        if(err) {
+          response.status = err.status;
+          response.data = err.message;
+          answer(response);
+        }
+        response.status = '200';
+        response.data = 'New Appointment Slot Created';
+        answer(response);
+      });
+    }
   },
 
-  deleteAppointment: function(data) {
-    var ObjectId = mongoose.Types.ObjectId;
-    var id = ObjectId(data);
+  deleteAppointment: function(data, answer) {
+    var id = mongoose.Types.ObjectId(data);
     Appointment.findByIdAndRemove(id, function(err) {
       if(err) {
-      } else {
+        response.status = err.status;
+        response.data = err.message;
+        answer(response);
       }
+      response.status = '200';
+      response.data = 'Appointment Deleted';
+      answer(response);
     });
   },
 
-  updateAppointment: function(data) {
+  updateAppointment: function(data, answer) {
     Appointment.update({_id: data._id}, {title: 'Filled',
     appointmentType: data.appointmentType, email: data.email},
-      function(err, num) {
-        if(err) {
-          console.log(err);
-          return {
-            status: err.status,
-            data: err.data
-          };
-        }
-      });
-    return {
-      status: 200,
-      data: 'appointment updated successfully'
-    };
+    function(err) {
+      if(err) {
+        response.status = err.status;
+        response.data = err.message;
+        answer(response);
+      }
+      response.status = '200';
+      response.data = 'Appointment Selected';
+      answer(response);
+    });
   }
 };
 

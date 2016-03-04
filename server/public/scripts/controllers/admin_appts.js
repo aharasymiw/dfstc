@@ -5,30 +5,33 @@ app.controller('AdminApptsCtrl', ['$scope', '$http',
   $scope.data = [].concat($scope.rowCollection);
 
   $scope.getTableData = function() {
-    $http.get('api/appointments').then(function(res) {
+    $http.get('api/appointments').then(function successCallback(res) {
       $scope.rowCollection = res.data;
       $scope.data = [].concat($scope.rowCollection);
-    }, function(err) {
+    }, function errorCallback(err) {
     });
   };
 
   $scope.getTableData();
 
   $scope.form = {
-    recurrence: undefined,
+    recurrence: undefined
   };
 
   $scope.submit = function() {
-    console.log('time: ', $scope.form.startTime);
-    console.log('date: ', $scope.form.date);
     var data = checkRec();
+    console.log(data);
     $http({
       method: 'POST',
       url: '/api/appointments',
-      data: data,
-    }).then(function successCallback(response) {
+      data: data
+    }).then(function successCallback(res) {
+      console.log('Status: ', res.status);
+      console.log('Data: ', res.data);
       $scope.getTableData();
-    }, function errorCallback(response) {
+    }, function errorCallback(err) {
+      console.log('Status: ', err.status);
+      console.log('Data: ', err.data);
     });
   };
 
@@ -43,7 +46,6 @@ app.controller('AdminApptsCtrl', ['$scope', '$http',
   $scope.seeFullAppt = function(row) {
     var index = $scope.rowCollection.indexOf(row);
     if (index !== -1) {
-      console.log(row);
     }
   };
 
@@ -56,12 +58,16 @@ app.controller('AdminApptsCtrl', ['$scope', '$http',
     $http({
       method: 'DELETE',
       url: '/api/appointments/' + row._id
-    }).then(function successCallback(response) {
-    }, function errorCallback(response) {
+    }).then(function successCallback(res) {
+      console.log('Status: ', res.status);
+      console.log('Data: ', res.data);
+    }, function errorCallback(err) {
+      console.log('Status: ', err.status);
+      console.log('Data: ', err.data);
     });
 
   };
 
   $scope.itemsByPage = 15;
 
-},]);
+}]);
