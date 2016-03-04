@@ -6,6 +6,14 @@ var Appointment = require('../models/appointments');
 
 var response = {};
 
+var success = {
+  okay: '200',
+  new: 'New Appointment Slot Created',
+  newMulti: 'New Appointment Slots Created',
+  delted: 'Appointment Deleted',
+  updated: 'Appointment Updated'
+};
+
 var appointmentService = {
 
   getAppointment: function(answer) {
@@ -15,7 +23,7 @@ var appointmentService = {
         response.data = err.message;
         answer(response);
       }
-      response.status = '200';
+      response.status = success.okay;
       response.data = appointments;
       answer(response);
     }).sort({date: 1});
@@ -29,8 +37,8 @@ var appointmentService = {
           response.data = err.message;
           answer(response);
         }
-        response.status = '200';
-        response.data = 'New Appointment Slots Created';
+        response.status = success.okay;
+        response.data = success.newMulti;
         answer(response);
       });
     } else {
@@ -40,8 +48,8 @@ var appointmentService = {
           response.data = err.message;
           answer(response);
         }
-        response.status = '200';
-        response.data = 'New Appointment Slot Created';
+        response.status = success.okay;
+        response.data = success.new;
         answer(response);
       });
     }
@@ -55,8 +63,8 @@ var appointmentService = {
         response.data = err.message;
         answer(response);
       }
-      response.status = '200';
-      response.data = 'Appointment Deleted';
+      response.status = success.okay;
+      response.data = success.deleted;
       answer(response);
     });
   },
@@ -70,8 +78,8 @@ var appointmentService = {
         response.data = err.message;
         answer(response);
       }
-      response.status = '200';
-      response.data = 'Appointment Selected';
+      response.status = success.okay;
+      response.data = success.updated;
       answer(response);
     });
   }
