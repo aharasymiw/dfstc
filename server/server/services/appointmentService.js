@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 var Appointment = require('../models/appointments');
 
 var response = {};
-
+var bookedAppt = 'Filled';
 var success = {
   okay: '200',
   new: 'New Appointment Slot Created',
@@ -30,6 +30,7 @@ var appointmentService = {
   },
 
   newAppointment: function(data, answer) {
+    //Check to see if data is an array of appointments
     if (typeof data[1] === 'object') {
       Appointment.insertMany(data, function(err) {
         if(err) {
@@ -56,6 +57,7 @@ var appointmentService = {
   },
 
   deleteAppointment: function(data, answer) {
+    //Convert the appt 'id' into an _id object for mongoose
     var id = mongoose.Types.ObjectId(data);
     Appointment.findByIdAndRemove(id, function(err) {
       if(err) {
@@ -70,7 +72,8 @@ var appointmentService = {
   },
 
   updateAppointment: function(data, answer) {
-    Appointment.update({_id: data._id}, {title: 'Filled',
+    //bookedAppt is a string variable defined above
+    Appointment.update({_id: data._id}, {title: bookedAppt,
     appointmentType: data.appointmentType, email: data.email},
     function(err) {
       if(err) {
