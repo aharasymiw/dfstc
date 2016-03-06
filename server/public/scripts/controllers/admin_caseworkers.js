@@ -3,15 +3,6 @@ app.controller('AdminCaseworkersCtrl', ['$scope', '$http',
   $scope.rowCollection = [];
   $scope.data = [].concat($scope.rowCollection);
 
-  $scope.getTableData = function() {
-    $http.get('api/caseworkers').then(function(res) {
-      $scope.rowCollection = res.data;
-      $scope.data = [].concat($scope.rowCollection);
-    }, function(err) {
-      console.log(err.message);
-    });
-  };
-
   var formReset = function() {
     $scope.form.cwFirstName = '';
     $scope.form.cwLastName = '';
@@ -28,9 +19,31 @@ app.controller('AdminCaseworkersCtrl', ['$scope', '$http',
       alert('New Caseworker Saved!');
       $scope.getTableData();
       formReset();
-    }, function errorCallback(response) {
-      alert('Caseworker Not Saved: ' + response.statusText);
-      console.log('caseworkers response: ', response.data.errmsg);
+    }, function errorCallback(err) {
+      alert('Error, Caseworker Not Saved: ' + err.statusText);
+      console.log('Caseworker Response: ', err.data.errmsg);
+    });
+  };
+
+  var deleteCaseworker = function(id) {
+    $http({
+      method: 'DELETE',
+      url: '/api/caseworkers/' + id
+    }).then(function successCallback(res) {
+      $scope.getTableData();
+    }, function errorCallback(err) {
+      alert('Error, Caseworker Not Deleted: ' + err.statusText);
+      console.log('Caseworker Response: ', err.data.errmsg);
+    });
+  };
+
+  $scope.getTableData = function() {
+    $http.get('api/caseworkers').then(function(res) {
+      $scope.rowCollection = res.data;
+      $scope.data = [].concat($scope.rowCollection);
+    }, function(err) {
+      alert('Error, Can not get Caseworkers: ' + err.statusText);
+      console.log('jauth response: ', err.data.errmsg);
     });
   };
 
@@ -41,20 +54,24 @@ app.controller('AdminCaseworkersCtrl', ['$scope', '$http',
         data: $scope.form
       }).then(function successCallback(response) {
         createCaseworker();
-      }, function errorCallback(response) {
-        alert('Caseworker Not Saved: ' + response.statusText);
-        console.log('jauth response: ', response.data.errmsg);
+      }, function errorCallback(err) {
+        alert('Error, Caseworker Not Saved: ' + err.statusText);
+        console.log('Jauth Response: ', err.data.errmsg);
       });
     };
 
-  $scope.getTableData();
-
-  $scope.removeItem = function removeItem(row) {
-    console.log(row);
-    var index = $scope.rowCollection.indexOf(row);
-    if (index !== -1) {
-      $scope.rowCollection.splice(index, 1);
-    }
+  $scope.removeItem = function(row) {
+    $http({
+      method: 'DELETE',
+      url: '/api/jauth/caseworker/' + row.cwEmail + '/' + row._id
+    }).then(function successCallback(res) {
+      deleteCaseworker(res.data);
+    }, function errorCallback(err) {
+      alert('Error, Caseworker Not Deleted: ' + err.statusText);
+      console.log('Jauth Response: ', err.message);
+    });
   };
+
+  $scope.getTableData();
 
 }]);
