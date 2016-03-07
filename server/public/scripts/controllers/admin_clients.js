@@ -42,6 +42,7 @@ app.controller('AdminClientsCtrl', ['$scope', '$http',
         method: 'DELETE',
         url: 'api/clients/' + data
       }).then(function successCallback(res) {
+        console.log(res);
         $location.path('/admin/clients');
       }, function errorCallback(res) {
         console.log(res);

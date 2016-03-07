@@ -16,8 +16,8 @@ router.post('/', function(req, res, next) {
 });
 
 router.put('/edit', function(req, res, next) {
-  clientService.editClient(req.body);
-  res.send('Client Successfully Updated');
+  var clientResponse = clientService.editClient(req.body)();
+  res.send(clientResponse);
 });
 
 router.delete('/:id', function(req, res, next) {

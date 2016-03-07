@@ -61,7 +61,7 @@ var clientService = {
 
     //Once loop is complete, update document with matching id using the clientUpdate object
     Client.update({_id: id}, clientUpdate, function catchError(err){
-      console.log(err);
+      return err;
     });
   },
 
@@ -70,9 +70,9 @@ var clientService = {
     var id = ObjectId(data);
     Client.findByIdAndRemove(id, function(err) {
       if(err) {
-        console.log('DB Error: ', err);
+        return('DB Error: ', err);
       } else {
-        console.log('Client Account Deleted');
+        return('Client Account Deleted');
       }
     });
   }
