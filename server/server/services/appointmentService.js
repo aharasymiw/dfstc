@@ -11,7 +11,7 @@ var success = {
   fail: 500,
   new: 'New Appointment Slot Created',
   newMulti: 'New Appointment Slots Created',
-  delted: 'Appointment Deleted',
+  deleted: 'Appointment Deleted',
   updated: 'Appointment Updated'
 };
 

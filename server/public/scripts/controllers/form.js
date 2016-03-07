@@ -41,14 +41,14 @@ function($scope, $http, store) {
   };
 
   var saveClient = function() {
-    console.log('FIRE!!!');
     $http({
       method: 'POST',
       url: '/api/clients',
       data: $scope.form
     }).then(function successCallback(response) {
+      console.log(response.data);
     }, function errorCallback(response) {
-      console.log(response);
+      console.log(response.data);
     });
   };
 

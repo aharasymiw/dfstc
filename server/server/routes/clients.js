@@ -12,18 +12,21 @@ router.get('/all', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-  clientService.newClient(req.body);
+  clientService.newClient(req.body, function(response) {
+    res.status(response.status).send(response.data);
+  });
 });
 
 router.put('/edit', function(req, res, next) {
-  var clientResponse = clientService.editClient(req.body)();
-  res.send(clientResponse);
+  clientService.editClient(req.body, function(response) {
+    res.status(response.status).send(response.data);
+  });
 });
 
 router.delete('/:id', function(req, res, next) {
-  console.log('req.params.id:', req.params.data);
-  clientService.deleteClient(req.params.id);
-  res.send('Client Successfully Deleted');
+  clientService.deleteClient(req.params.id, function(response) {
+    res.status(response.status).send(response.data);
+  });
 });
 
 module.exports = router;

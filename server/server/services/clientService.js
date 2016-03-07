@@ -1,14 +1,27 @@
 var mongoose = require('mongoose');
 var Client = require('../models/clients');
+var response = {};
+var success = {
+  okay: 200,
+  fail: 500,
+  new: 'New Client Created',
+  deleted: 'Client Deleted',
+  updated: 'Client Updated'
+};
 
 var clientService = {
 
-  newClient: function(data) {
+  newClient: function(data, answer) {
     var client = new Client(data);
     client.save(function(err) {
       if(err) {
-        console.log(err);
+        response.status = success.fail;
+        response.data = err.message;
+        answer(response);
       }
+      response.status = success.okay;
+      response.data = success.new;
+      answer(response);
     });
   },
   getClients: function(callback) {
@@ -20,7 +33,7 @@ var clientService = {
     });
   },
 
-  editClient: function(data) {
+  editClient: function(data, answer) {
     //Converts data._id into an id type, which can query mongo database.
     var ObjectId = mongoose.Types.ObjectId;
     var id = ObjectId(data._id);
@@ -61,19 +74,29 @@ var clientService = {
 
     //Once loop is complete, update document with matching id using the clientUpdate object
     Client.update({_id: id}, clientUpdate, function catchError(err){
-      return err;
+      if(err) {
+        response.status = success.fail;
+        response.data = err.message;
+        answer(response);
+      }
+      response.status = success.okay;
+      response.data = success.updated;
+      answer(response);
     });
   },
 
-  deleteClient: function(data) {
+  deleteClient: function(data, answer) {
     var ObjectId = mongoose.Types.ObjectId;
     var id = ObjectId(data);
     Client.findByIdAndRemove(id, function(err) {
       if(err) {
-        return('DB Error: ', err);
-      } else {
-        return('Client Account Deleted');
+        response.status = success.fail;
+        response.data = err.message;
+        answer(response);
       }
+      response.status = success.okay;
+      response.data = success.deleted;
+      answer(response);
     });
   }
 };
