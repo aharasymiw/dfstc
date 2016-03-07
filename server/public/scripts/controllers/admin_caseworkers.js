@@ -16,12 +16,10 @@ app.controller('AdminCaseworkersCtrl', ['$scope', '$http',
       url: '/api/caseworkers',
       data: $scope.form
     }).then(function successCallback(response) {
-      alert('New Caseworker Saved!');
       $scope.getTableData();
       formReset();
     }, function errorCallback(err) {
-      alert('Error, Caseworker Not Saved: ' + err.statusText);
-      console.log('Caseworker Response: ', err.data.errmsg);
+      alert('Error, Caseworker Not Saved: ' + err.data);
     });
   };
 
@@ -32,8 +30,7 @@ app.controller('AdminCaseworkersCtrl', ['$scope', '$http',
     }).then(function successCallback(res) {
       $scope.getTableData();
     }, function errorCallback(err) {
-      alert('Error, Caseworker Not Deleted: ' + err.statusText);
-      console.log('Caseworker Response: ', err.data.errmsg);
+      alert('Error, Caseworker Not Deleted: ' + err.data);
     });
   };
 
@@ -42,8 +39,7 @@ app.controller('AdminCaseworkersCtrl', ['$scope', '$http',
       $scope.rowCollection = res.data;
       $scope.data = [].concat($scope.rowCollection);
     }, function(err) {
-      alert('Error, Can not get Caseworkers: ' + err.statusText);
-      console.log('jauth response: ', err.data.errmsg);
+      alert('Error, Can not get Caseworkers: ' + err.data);
     });
   };
 
@@ -55,8 +51,7 @@ app.controller('AdminCaseworkersCtrl', ['$scope', '$http',
       }).then(function successCallback(response) {
         createCaseworker();
       }, function errorCallback(err) {
-        alert('Error, Caseworker Not Saved: ' + err.statusText);
-        console.log('Jauth Response: ', err.data.errmsg);
+        alert('Error, Caseworker Not Saved: ' + err.data);
       });
     };
 
@@ -67,8 +62,7 @@ app.controller('AdminCaseworkersCtrl', ['$scope', '$http',
     }).then(function successCallback(res) {
       deleteCaseworker(res.data);
     }, function errorCallback(err) {
-      alert('Error, Caseworker Not Deleted: ' + err.statusText);
-      console.log('Jauth Response: ', err.message);
+      alert('Error, Caseworker Not Deleted: ' + err.data);
     });
   };
 
