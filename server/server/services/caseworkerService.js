@@ -4,32 +4,60 @@
 var mongoose = require('mongoose');
 var Caseworker = require('../models/caseworkers');
 
-var caseworkerService = {
-  newCaseworker: function(data) {
-    var caseworker = new Caseworker(data);
-    caseworker.save(function(err) {
-      if(err) {
-        console.log(err);
-        return {
-          status: err.status,
-          data: err.data
-        };
+var response = {};
+var success = {
+  okay: 200,
+  fail: 500,
+  new: 'New Caseworker Created',
+  delted: 'Caseworker Deleted'
+};
 
-      }
-    });
-    return {
-      status: 200,
-      data: 'New caseworker created'
-    };
-  },
-  getCaseworkers: function(callback) {
+var caseworkerService = {
+
+  getCaseworkers: function(answer) {
     Caseworker.find({}, function(err, caseworkers) {
       if(err) {
-        callback({message: 'No records found'});
+        response.status = success.fail;
+        response.data = err.message;
+        answer(response);
       }
-      callback(caseworkers);
+      response.status = success.okay;
+      response.data = caseworkers;
+      answer(response);
+    }).sort({cwOrg: 1});
+  },
+
+  newCaseworker: function(data, answer) {
+    //Convert all e-mail address to lower case before saving.
+    data.cwEmail = data.cwEmail.toLowerCase();
+
+    Caseworker.create(data, function(err) {
+      if(err) {
+        response.status = success.fail;
+        response.data = err.message;
+        answer(response);
+      }
+      response.status = success.okay;
+      response.data = success.new;
+      answer(response);
+    });
+  },
+
+  deleteCaseworker: function(data, answer) {
+    //Convert the caseworker 'id' into an _id object for mongoose
+    var id = mongoose.Types.ObjectId(data);
+    Caseworker.findByIdAndRemove(id, function(err) {
+      if(err) {
+        response.status = success.fail;
+        response.data = err.message;
+        answer(response);
+      }
+      response.status = success.okay;
+      response.data = success.deleted;
+      answer(response);
     });
   }
+
 };
 
 module.exports = caseworkerService;

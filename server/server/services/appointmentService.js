@@ -4,61 +4,88 @@
 var mongoose = require('mongoose');
 var Appointment = require('../models/appointments');
 
-var appointmentService = {
-  newAppointment: function(data) {
-    var appointment = new Appointment(data);
-    appointment.save(function(err) {
-      if(err) {
-      }
-    });
-  },
+var response = {};
+var bookedAppt = 'Filled';
+var success = {
+  okay: 200,
+  fail: 500,
+  new: 'New Appointment Slot Created',
+  newMulti: 'New Appointment Slots Created',
+  delted: 'Appointment Deleted',
+  updated: 'Appointment Updated'
+};
 
-  getAppointment: function(callback) {
+var appointmentService = {
+
+  getAppointment: function(answer) {
     Appointment.find({}, function(err, appointments) {
       if(err) {
-        callback({message: 'No records found'});
-      } else {
-        callback(appointments);
+        response.status = success.fail;
+        response.data = err.message;
+        answer(response);
       }
-    });
+      response.status = success.okay;
+      response.data = appointments;
+      answer(response);
+    }).sort({date: 1});
   },
 
-  newMultiAppointment: function(data) {
-    Appointment.create(data, function(err, array) {
-      if(err) {
-        return err;
-      }else {
-        return array;
-      }
-    });
+  newAppointment: function(data, answer) {
+    //Check to see if data is an array of appointments
+    if (typeof data[1] === 'object') {
+      Appointment.insertMany(data, function(err) {
+        if(err) {
+          response.status = success.fail;
+          response.data = err.message;
+          answer(response);
+        }
+        response.status = success.okay;
+        response.data = success.newMulti;
+        answer(response);
+      });
+    } else {
+      Appointment.create(data, function(err) {
+        if(err) {
+          response.status = success.fail;
+          response.data = err.message;
+          answer(response);
+        }
+        response.status = success.okay;
+        response.data = success.new;
+        answer(response);
+      });
+    }
   },
 
-  deleteAppointment: function(data) {
-    var ObjectId = mongoose.Types.ObjectId;
-    var id = ObjectId(data);
+  deleteAppointment: function(data, answer) {
+    //Convert the appt 'id' into an _id object for mongoose
+    var id = mongoose.Types.ObjectId(data);
     Appointment.findByIdAndRemove(id, function(err) {
       if(err) {
-      } else {
+        response.status = success.fail;
+        response.data = err.message;
+        answer(response);
       }
+      response.status = success.okay;
+      response.data = success.deleted;
+      answer(response);
     });
   },
 
-  updateAppointment: function(data) {
-    Appointment.update({_id: data._id}, {title: 'Filled',
+  updateAppointment: function(data, answer) {
+    //bookedAppt is a string variable defined above
+    Appointment.update({_id: data._id}, {title: bookedAppt,
     appointmentType: data.appointmentType, email: data.email},
-      function(err, num) {
-        if(err) {
-          console.log(err);
-          return {
-            status: err.status,
-            data: err.data
-          };
-        }
-      });
-    return {
-      status: 200,
-      data: 'appointment updated successfully'
-    };
+    function(err) {
+      if(err) {
+        response.status = success.fail;
+        response.data = err.message;
+        answer(response);
+      }
+      response.status = success.okay;
+      response.data = success.updated;
+      answer(response);
+    });
   }
 };
 

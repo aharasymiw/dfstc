@@ -6,9 +6,10 @@ var mongoose = require('mongoose');
 var User = require('../models/jauth');
 var easypass = require('easypass');
 
-router.get('/', function(req, res, next) {
-  res.send('');
-});
+var success = {
+  okay: 200,
+  fail: 500
+};
 
 router.post('/client', function(req, res, next) {
   var type = 'client';
@@ -35,11 +36,10 @@ router.post('/caseworker', function(req, res, next) {
 
   user.save(function(err) {
     if (err) {
-      console.log('Error saving user: ', err);
-      res.status(500).send(err);
+      res.status(success.fail).send(err.message);
     } else {
       mailer.sendMailCaseworker(req.body.cwEmail, password);
-      res.status(200).send('New user created');
+      res.status(success.okay).send('New user created');
     }
   });
 });
@@ -52,17 +52,24 @@ router.post('/login', function(req, res, next) {
     if(err) {
       res.status(400).send(err.message);
     } else {
-      res.status(200).send('New User Saved');
+      res.status(success.okay).send('New User Saved');
     }
   });
 });
 
+/*
 router.put('/', function(req, res, next) {
   res.send('');
 });
+*/
 
-router.delete('/', function(req, res, next) {
-  res.send('');
+router.delete('/caseworker/:email/:id', function(req, res) {
+  User.findOneAndRemove({email: req.params.email}, function(err) {
+    if(err) {
+      res.status(success.fail).send(err.message);
+    }
+    res.status(success.okay).send(req.params.id);
+  });
 });
 
 module.exports = router;

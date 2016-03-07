@@ -5,30 +5,36 @@ app.controller('AdminApptsCtrl', ['$scope', '$http',
   $scope.data = [].concat($scope.rowCollection);
 
   $scope.getTableData = function() {
-    $http.get('api/appointments').then(function(res) {
+    $http.get('api/appointments').then(function successCallback(res) {
       $scope.rowCollection = res.data;
       $scope.data = [].concat($scope.rowCollection);
-    }, function(err) {
+    }, function errorCallback(err) {
+      alert('Error, Can not get Appointments: ' + err.data);
     });
+  };
+
+  var formReset = function() {
+    $scope.form.date = undefined;
+    $scope.form.startTime = undefined;
+    $scope.form.endTime = undefined;
+    $scope.form.recurrence = undefined;
+    $scope.form.dateRec = undefined;
   };
 
   $scope.getTableData();
 
-  $scope.form = {
-    recurrence: undefined,
-  };
-
   $scope.submit = function() {
-    console.log('time: ', $scope.form.startTime);
-    console.log('date: ', $scope.form.date);
     var data = checkRec();
     $http({
       method: 'POST',
       url: '/api/appointments',
-      data: data,
-    }).then(function successCallback(response) {
+      data: data
+    }).then(function successCallback(res) {
+      formReset();
       $scope.getTableData();
-    }, function errorCallback(response) {
+    }, function errorCallback(err) {
+      alert('Error, Appointment Not Created: ' + err.data);
+
     });
   };
 
@@ -43,25 +49,20 @@ app.controller('AdminApptsCtrl', ['$scope', '$http',
   $scope.seeFullAppt = function(row) {
     var index = $scope.rowCollection.indexOf(row);
     if (index !== -1) {
-      console.log(row);
     }
   };
 
   $scope.removeItem = function(row) {
-    var index = $scope.rowCollection.indexOf(row);
-    if (index !== -1) {
-      $scope.rowCollection.splice(index, 1);
-    }
-
     $http({
       method: 'DELETE',
       url: '/api/appointments/' + row._id
-    }).then(function successCallback(response) {
-    }, function errorCallback(response) {
+    }).then(function successCallback(res) {
+      $scope.getTableData();
+    }, function errorCallback(err) {
+      alert('Error, Appointment Not Deleted: ' + err.data);
     });
-
   };
 
   $scope.itemsByPage = 15;
 
-},]);
+}]);
