@@ -7,8 +7,9 @@ var Caseworker = require('../models/caseworkers');
 var response = {};
 var success = {
   okay: 200,
+  fail: 500,
   new: 'New Caseworker Created',
-  delted: 'Caseworker Deleted',
+  delted: 'Caseworker Deleted'
 };
 
 var caseworkerService = {
@@ -16,7 +17,7 @@ var caseworkerService = {
   getCaseworkers: function(answer) {
     Caseworker.find({}, function(err, caseworkers) {
       if(err) {
-        response.status = err.status;
+        response.status = success.fail;
         response.data = err.message;
         answer(response);
       }
@@ -32,7 +33,7 @@ var caseworkerService = {
 
     Caseworker.create(data, function(err) {
       if(err) {
-        response.status = err.status;
+        response.status = success.fail;
         response.data = err.message;
         answer(response);
       }
@@ -47,7 +48,7 @@ var caseworkerService = {
     var id = mongoose.Types.ObjectId(data);
     Caseworker.findByIdAndRemove(id, function(err) {
       if(err) {
-        response.status = err.status;
+        response.status = success.fail;
         response.data = err.message;
         answer(response);
       }

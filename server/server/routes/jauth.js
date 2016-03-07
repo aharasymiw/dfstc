@@ -8,11 +8,8 @@ var easypass = require('easypass');
 
 var success = {
   okay: 200,
+  fail: 500
 };
-
-router.get('/', function(req, res, next) {
-  res.send('');
-});
 
 router.post('/client', function(req, res, next) {
   var type = 'client';
@@ -39,8 +36,7 @@ router.post('/caseworker', function(req, res, next) {
 
   user.save(function(err) {
     if (err) {
-      console.log('Error saving user: ', err);
-      res.status(500).send(err);
+      res.status(success.fail).send(err.message);
     } else {
       mailer.sendMailCaseworker(req.body.cwEmail, password);
       res.status(success.okay).send('New user created');
@@ -68,11 +64,9 @@ router.put('/', function(req, res, next) {
 */
 
 router.delete('/caseworker/:email/:id', function(req, res) {
-  console.log('Email: ', req.params.email);
-  console.log('Id: ', req.params.id);
   User.findOneAndRemove({email: req.params.email}, function(err) {
     if(err) {
-      res.status(err.status).send(err.message);
+      res.status(success.fail).send(err.message);
     }
     res.status(success.okay).send(req.params.id);
   });
