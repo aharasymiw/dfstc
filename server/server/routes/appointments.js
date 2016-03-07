@@ -16,6 +16,7 @@ router.post('/', function(req, res) {
   });
 });
 
+//TODO Make this a put route
 router.post('/update', function(req, res) {
   appointmentService.updateAppointment(req.body, function(response) {
     res.status(response.status).send(response.data);

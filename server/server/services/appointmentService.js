@@ -7,7 +7,8 @@ var Appointment = require('../models/appointments');
 var response = {};
 var bookedAppt = 'Filled';
 var success = {
-  okay: '200',
+  okay: 200,
+  fail: 500,
   new: 'New Appointment Slot Created',
   newMulti: 'New Appointment Slots Created',
   delted: 'Appointment Deleted',
@@ -19,7 +20,7 @@ var appointmentService = {
   getAppointment: function(answer) {
     Appointment.find({}, function(err, appointments) {
       if(err) {
-        response.status = err.status;
+        response.status = success.fail;
         response.data = err.message;
         answer(response);
       }
@@ -34,7 +35,7 @@ var appointmentService = {
     if (typeof data[1] === 'object') {
       Appointment.insertMany(data, function(err) {
         if(err) {
-          response.status = err.status;
+          response.status = success.fail;
           response.data = err.message;
           answer(response);
         }
@@ -45,7 +46,7 @@ var appointmentService = {
     } else {
       Appointment.create(data, function(err) {
         if(err) {
-          response.status = err.status;
+          response.status = success.fail;
           response.data = err.message;
           answer(response);
         }
@@ -61,7 +62,7 @@ var appointmentService = {
     var id = mongoose.Types.ObjectId(data);
     Appointment.findByIdAndRemove(id, function(err) {
       if(err) {
-        response.status = err.status;
+        response.status = success.fail;
         response.data = err.message;
         answer(response);
       }
@@ -77,7 +78,7 @@ var appointmentService = {
     appointmentType: data.appointmentType, email: data.email},
     function(err) {
       if(err) {
-        response.status = err.status;
+        response.status = success.fail;
         response.data = err.message;
         answer(response);
       }
