@@ -54,8 +54,12 @@ function($scope, $http, store) {
 
   retrieveAppointments();
 
-  $scope.submit = function() {
-    updateAppointments();
+  $scope.submit = function(valid) {
+    if(!valid) {
+      alert('Form Invalid: Please fill out all required fields');
+    } else {
+      updateAppointments();
+    }
   };
 
   $scope.states = ('AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME ' +
